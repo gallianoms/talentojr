@@ -3,8 +3,8 @@ import React from 'react'
 const Login = () => {
   return (
     <div className='container mt-5'>
-      <div className='row d-flex align-items-center justify-content-evenly'>
-        <div className='col-lg-4 '>
+      <div className='row mx-auto d-flex align-items-center justify-content-evenly'>
+        <div className='col-lg-4 d-none d-sm-block'>
           <img
             src='https://static.vecteezy.com/system/resources/previews/016/757/184/original/3d-padlock-key-icon-with-password-insecure-isolated-security-data-protection-minimal-concept-3d-render-illustration-png.png'
             alt=''
@@ -13,7 +13,7 @@ const Login = () => {
           />
         </div>
         <div
-          className='col-lg-3 mt-4 rounded-5 px-1'
+          className='col-lg-3 mt-4 rounded-5 px-lg-1 px-4'
           style={{ height: '470px', backgroundColor: '#f3f4f6' }}
         >
           {/* Input Email + Input Password */}
@@ -38,10 +38,10 @@ const Login = () => {
             </div>
           </div>
           {/* Remember me + Forgot password */}
-          <div className='row d-flex justify-content-center  mt-3'>
+          <div className='row d-flex justify-content-center mt-3'>
             <div className='col-lg-12'>
-              <div className='row d-flex justify-content-center'>
-                <div className='col-lg-4  d-flex align-self-center'>
+              <div className='row row-cols-auto d-flex justify-content-lg-center justify-content-evenly'>
+                <div className='col-lg-4 d-flex align-self-center'>
                   <div className='form-check'>
                     <input
                       type='checkbox'
