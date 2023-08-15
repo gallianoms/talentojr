@@ -1,4 +1,8 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { AiOutlineMail } from "react-icons/ai";
+import { AiOutlinePhone } from "react-icons/ai";
 
 const Home = () => {
   return (
@@ -37,7 +41,7 @@ const Home = () => {
 
       <main id="main">
         {/* Section about */}
-        <section id="about" className="about">
+        <section id="about" className="about" data-aos="fade-up">
           <div className="container">
             <div className="row">
               <div className="col-lg-6" data-aos="zoom-in">
@@ -78,14 +82,14 @@ const Home = () => {
         </section>
       </main>
 
-      {/* team section */}
-      <section id="team" className="team section-bg">
+      {/* latest offers */}
+      <section id="team" className="team section-bg" data-aos="fade-up">
         <div className="container mb-5 mt-5">
           <div className="section-title">
-            <h2>Nuestro Equipo</h2>
+            <h2>Ofertas recientes</h2>
           </div>
           <div className="row">
-            <div className="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
               <div className="icon-box icon-box-pink">
                 <div className="icon">
                   <i className="bx bxl-dribbble"></i>
@@ -95,10 +99,13 @@ const Home = () => {
                   Voluptatum deleniti atque corrupti quos dolores et quas
                   molestias excepturi sint occaecati cupiditate
                 </p>
+                <a href="#offers" className="link-offers">
+                  Ver ofertas
+                </a>
               </div>
             </div>
 
-            <div className="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
               <div className="icon-box icon-box-cyan">
                 <div className="icon">
                   <i className="bx bx-file"></i>
@@ -108,10 +115,13 @@ const Home = () => {
                   Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla
                 </p>
+                <a href="#offers" className="link-offers">
+                  Ver ofertas
+                </a>
               </div>
             </div>
 
-            <div className="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
               <div className="icon-box icon-box-green">
                 <div className="icon">
                   <i className="bx bx-tachometer"></i>
@@ -121,10 +131,13 @@ const Home = () => {
                   Excepteur sint occaecat cupidatat non proident, sunt in culpa
                   qui officia deserunt mollit anim
                 </p>
+                <a href="#offers" className="link-offers">
+                  Ver ofertas
+                </a>
               </div>
             </div>
 
-            <div className="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0">
               <div className="icon-box icon-box-blue">
                 <div className="icon">
                   <i className="bx bx-world"></i>
@@ -134,6 +147,41 @@ const Home = () => {
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui
                   blanditiis praesentium voluptatum
                 </p>
+                <a href="#offers" className="link-offers">
+                  Ver ofertas
+                </a>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0">
+              <div className="icon-box icon-box-green">
+                <div className="icon">
+                  <i className="bx bx-tachometer"></i>
+                </div>
+                <h4 className="title">Magni Dolores</h4>
+                <p className="description">
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim
+                </p>
+                <a href="#offers" className="link-offers">
+                  Ver ofertas
+                </a>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0">
+              <div className="icon-box icon-box-green">
+                <div className="icon">
+                  <i className="bx bx-tachometer"></i>
+                </div>
+                <h4 className="title">Magni Dolores</h4>
+                <p className="description">
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim
+                </p>
+                <a href="#offers" className="link-offers">
+                  Ver ofertas
+                </a>
               </div>
             </div>
           </div>
@@ -141,7 +189,11 @@ const Home = () => {
 
         {/* FAQS section */}
         <h1>Preguntas frecuentes</h1>
-        <div className="accordion accordion-flush" id="accordionFlushExample">
+        <div
+          className="accordion accordion-flush"
+          id="accordionFlushExample"
+          data-aos="fade-up"
+        >
           <div className="accordion-item">
             <h2 className="accordion-header" id="flush-headingOne">
               <button
@@ -228,6 +280,112 @@ const Home = () => {
 
         {/* Footer */}
       </section>
+
+      {/* <!-- ======= Contact Section ======= --> */}
+      <section id="contact" className="contact section-bg mt-5 mb-5">
+        <div className="container">
+          <div className="section-title" data-aos="fade-up">
+            <h2>Contacta con nosotros</h2>
+          </div>
+
+          <div className="row">
+            <div
+              className="col-lg-5 d-flex align-items-stretch"
+              data-aos="fade-right"
+            >
+              <div className="info">
+                <div className="address">
+                  <i className="bi bi-geo-alt">
+                    <HiOutlineLocationMarker />
+                  </i>
+                  <h4>Location:</h4>
+                  <p>C/ D'en Llastics 2, 08003 Barcelona</p>
+                </div>
+
+                <div className="email">
+                  <i className="bi bi-envelope">
+                    <AiOutlineMail />
+                  </i>
+                  <h4>Email:</h4>
+                  <p>talentojr@gmail.com</p>
+                </div>
+
+                <div className="phone">
+                  <i className="bi bi-phone">
+                    <AiOutlinePhone />
+                  </i>
+                  <h4>Call:</h4>
+                  <p>+1 5589 55488 55s</p>
+                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d748.3370839395462!2d2.1795248!3d41.388241!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3b369fa8b5b%3A0x7a8065656d2cbe0!2sFundesplai%20-%20Centre%20de%20Formaci%C3%B3%20Ll%C3%A0stics!5e0!3m2!1sen!2ses!4v1692093487992!5m2!1sen!2ses"
+                  allowFullScreen=""
+                  className="iframe"
+                  loading="lazy"
+                  reFerrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+
+            <div
+              className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch"
+              data-aos="fade-left"
+            >
+              <form>
+                <div className="row">
+                  <div className="form-group col-md-6">
+                    <label>Your Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      className="form-control"
+                      id="name"
+                      required
+                    />
+                  </div>
+                  <div className="form-group col-md-6 mt-3 mt-md-0">
+                    <label>Your Email</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      id="email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="form-group mt-3">
+                  <label>Subject</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="subject"
+                    id="subject"
+                    required
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label>Message</label>
+                  <textarea
+                    className="form-control"
+                    name="message"
+                    rows="10"
+                    required
+                  ></textarea>
+                </div>
+                <div className="text-center mt-3">
+                  <a href="#contact" className="btn-get-started">
+                    Send Message
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <!-- End Contact Section --> */}
+
+      {/* Footer section */}
       <footer id="footer">
         <div className="container">
           <div className="copyright">
