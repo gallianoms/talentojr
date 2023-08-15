@@ -163,7 +163,7 @@ const CreateProfileUser = () => {
                   </div>
                 </div>
               </div>
-              {/* Location - Education */}
+              {/* Location - Language - Education */}
               <div className='row mb-3 '>
                 <div className='d-lg-flex justify-content-start gap-3'>
                   <div className='col-lg-3 col-12 form-floating mb-3 mb-lg-0'>
@@ -181,10 +181,22 @@ const CreateProfileUser = () => {
                       Localización
                     </label>
                   </div>
-                  <div className='col-lg-7 col-12 form-floating'>
+                  <div className='col-lg-3 col-12 form-floating mb-3 mb-lg-0'>
                     <input
                       type='text'
                       className='form-control rounded-1 text-md'
+                      id='idioma'
+                      required
+                      placeholder='Ingrese su localización'
+                    />
+                    <label htmlFor='idioma' className='form-label text-md'>
+                      Segundo idioma
+                    </label>
+                  </div>
+                  <div className='col-lg-4 col-12 form-floating '>
+                    <input
+                      type='text'
+                      className='form-control rounded-1 text-md customWidth'
                       id='nivelEducacion'
                       required
                       placeholder='Ingrese su nivel de educación'
@@ -293,7 +305,7 @@ const CreateProfileUser = () => {
               </div>
               {/* Permission of Work - Save Button */}
               <div className='row d-flex justify-content-start gap-1 '>
-                <div className='col-lg-10 mb-2'>
+                <div className='col-lg-5 mb-2'>
                   <div className='form-check'>
                     <input
                       className='form-check-input'
@@ -310,6 +322,22 @@ const CreateProfileUser = () => {
                     </label>
                   </div>
                 </div>
+                <div className='col-lg-5 mb-2'>
+                  <div class='mb-3 d-flex align-items-center justify-content-center gap-3'>
+                    <label
+                      htmlFor='formFileSm'
+                      className='form-label text-md m-0'
+                    >
+                      CV:
+                    </label>
+                    <input
+                      className='form-control form-control-sm rounded-1 text-sm'
+                      id='formFileSm'
+                      type='file'
+                    />
+                  </div>
+                </div>
+
                 <div className='col-lg-10 d-none d-lg-block'>
                   <button
                     className='btn btn-primary text-md rounded-1'
