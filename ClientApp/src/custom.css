@@ -8,7 +8,11 @@ body {
   /* color: #1f2937 */
   font-family: 'Inter', sans-serif;
 }
-
+@media (min-width: 992px) {
+  .customWidth {
+    width: 265px;
+  }
+}
 /* FONT SIZE */
 .text-sm {
   font-size: 13.6px;

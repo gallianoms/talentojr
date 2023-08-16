@@ -36,7 +36,12 @@ export class NavMenu extends Component {
           style={{ backgroundColor: '#6366f1' }}
           container
         >
-          <NavbarBrand tag={Link} to='/' style={{ color: '#fff' }}>
+          <NavbarBrand
+            tag={Link}
+            to='/'
+            style={{ color: '#fff' }}
+            className='py-2'
+          >
             TalentoJr.
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className='mr-2' />
