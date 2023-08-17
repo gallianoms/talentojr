@@ -30,7 +30,7 @@ const Home = () => {
               </div>
             </div>
             <div
-              className="col-lg-6 order-1 order-lg-2 hero-img"
+              className="col-lg-6 order-1 order-lg-2 hero-img d-flex justify-content-center"
               data-aos="fade-left"
             >
               <img src="/img/hero-img.png" className="img-fluid w-75" alt="" />
@@ -204,7 +204,7 @@ const Home = () => {
                 aria-expanded="false"
                 aria-controls="flush-collapseOne"
               >
-                Accordion Item #1
+                <strong>¿Cómo funciona su plataforma?</strong>
               </button>
             </h2>
             <div
@@ -214,9 +214,9 @@ const Home = () => {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                first item's accordion body.
+                Nuestra plataforma busca servir como un puente entre empresas
+                que buscan talento junior y personas que están comenzando sus
+                carreras en el campo de TI.
               </div>
             </div>
           </div>
@@ -230,7 +230,10 @@ const Home = () => {
                 aria-expanded="false"
                 aria-controls="flush-collapseTwo"
               >
-                Accordion Item #2
+                <strong>
+                  ¿Cómo se seleccionan y evalúan a los desarrolladores junior en
+                  su plataforma?
+                </strong>
               </button>
             </h2>
             <div
@@ -257,7 +260,10 @@ const Home = () => {
                 aria-expanded="false"
                 aria-controls="flush-collapseThree"
               >
-                Accordion Item #3
+                <strong>
+                  ¿Puedo ver ejemplos de trabajos anteriores de los
+                  desarrolladores junior?
+                </strong>
               </button>
             </h2>
             <div
@@ -267,12 +273,92 @@ const Home = () => {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
+                Sí, podemos proporcionar ejemplos de proyectos previos para
+                demostrar la capacidad de nuestros desarrolladores junior.
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingFour">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour"
+                aria-expanded="false"
+                aria-controls="flush-collapseFour"
+              >
+                <strong>
+                  ¿Qué medidas de seguridad tienen en su plataforma?
+                </strong>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFour"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingFour"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+                Implementamos medidas de seguridad para proteger la información
+                confidencial y garantizar la privacidad de los datos.
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingFive">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFive"
+                aria-expanded="false"
+                aria-controls="flush-collapseFive"
+              >
+                <strong>
+                  ¿Qué sucede si no estamos satisfechos con el trabajo de un
+                  desarrollador junior?
+                </strong>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFive"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingFive"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+                Trabajaremos para resolver cualquier problema y, si es
+                necesario, encontraremos soluciones alternativas para asegurar
+                su satisfacción.
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingSix">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseSix"
+                aria-expanded="false"
+                aria-controls="flush-collapseSix"
+              >
+                <strong>
+                  ¿Cómo nos ponemos en contacto con su equipo de soporte si
+                  tenemos alguna pregunta o problema?
+                </strong>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseSix"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingSix"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+                Pueden ponerse en contacto con nuestro equipo de soporte a
+                través de chat en vivo, correo electrónico o teléfono.
               </div>
             </div>
           </div>

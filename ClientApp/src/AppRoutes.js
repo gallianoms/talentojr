@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import CreateProfileUser from "./components/CreateProfileUser";
+import CreateJob from "./components/CreateJob";
 
 const AppRoutes = [
   {
@@ -29,6 +30,11 @@ const AppRoutes = [
   {
     path: "/create-profile-user",
     element: <CreateProfileUser />,
+  },
+
+  {
+    path: "/create-job",
+    element: <CreateJob />,
   },
 ];
 

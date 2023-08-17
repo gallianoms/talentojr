@@ -142,6 +142,13 @@ body {
   text-decoration: none;
 }
 
+#hero h1 {
+  margin: 0 0 20px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
 /* About section */
 .about {
   padding: 0;
@@ -267,9 +274,6 @@ body {
   border-radius: 4px;
 }
 
-.contact{
-  padding-left: 80px;
-}
 
 .contact .info i {
   font-size: 20px;
@@ -357,3 +361,6 @@ body {
   text-align: center;
   padding-top: 30px;
 }
+
+
+
