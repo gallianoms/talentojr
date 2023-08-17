@@ -12,6 +12,11 @@ body {
   .customWidth {
     width: 265px;
   }
+  .textAreaCustomWidth {
+    width: 872px;
+
+  }
+
 }
 /* FONT SIZE */
 .text-sm {
