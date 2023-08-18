@@ -362,5 +362,18 @@ body {
   padding-top: 30px;
 }
 
+/* job form */
+.form-container {
+  min-height: 100vh;
+}
+
+/* Candidates section */
+thead{
+  background-color: #009cea;
+}
+
+.table-responsive{
+  position: relative; height: 700px
+}
 
 

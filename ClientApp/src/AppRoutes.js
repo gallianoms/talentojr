@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import CreateProfileUser from "./components/CreateProfileUser";
 import CreateJob from "./components/CreateJob";
+import Candidates from "./components/Candidates";
 
 const AppRoutes = [
   {
@@ -26,6 +27,10 @@ const AppRoutes = [
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/candidatos",
+    element: <Candidates />,
   },
   {
     path: "/create-profile-user",
