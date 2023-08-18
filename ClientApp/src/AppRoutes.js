@@ -4,6 +4,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import CreateProfileUser from './components/CreateProfileUser'
 import CreateProfileCompany from './components/CreateProfileCompany'
+import SearchJob from './components/SearchJob'
 
 const AppRoutes = [
   {
@@ -29,6 +30,10 @@ const AppRoutes = [
   {
     path: '/create-profile-company',
     element: <CreateProfileCompany />,
+  },
+  {
+    path: '/search-job',
+    element: <SearchJob />,
   },
 ]
 

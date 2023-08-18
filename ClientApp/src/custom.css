@@ -1,4 +1,5 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 body {
   /* gray 600 */
   /* color: #4b5563 */
@@ -129,6 +130,40 @@ body {
   background-color: #1f2937;
   border-color: #1f2937;
 }
+
+.text-bg-primary {
+  background-color: #6366f1 !important;
+}
+
+.text-bg-secondary {
+  background-color: #374151 !important;
+}
+
+.text-bg-success {
+  background-color: #10B981 !important;
+}
+
+.text-bg-info {
+  background-color: #3B82F6 !important;
+  color: #fff !important;
+}
+
+.text-bg-warning {
+  background-color: #F59E0B !important;
+}
+
+.text-bg-danger {
+  background-color: #EF4444 !important;
+}
+
+.text-bg-light {
+  background-color: #e3e8ed !important;
+}
+
+.text-bg-dark {
+  background-color: #1F2937 !important;
+}
+
 
 /* Hero section */
 .btn-get-started{
