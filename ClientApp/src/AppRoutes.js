@@ -1,9 +1,10 @@
-import { Counter } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import CreateProfileUser from "./components/CreateProfileUser";
+import { FetchData } from './components/FetchData'
+import Home from './components/Home'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
+import CreateProfileUser from './components/CreateProfileUser'
+import CreateProfileCompany from './components/CreateProfileCompany'
+import SearchJob from './components/SearchJob'
 
 const AppRoutes = [
   {
@@ -11,25 +12,29 @@ const AppRoutes = [
     element: <Home />,
   },
   {
-    path: "/counter",
-    element: <Counter />,
-  },
-  {
-    path: "/fetch-data",
+    path: '/fetch-data',
     element: <FetchData />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
   {
-    path: "/signup",
+    path: '/signup',
     element: <SignUp />,
   },
   {
-    path: "/create-profile-user",
+    path: '/create-profile-user',
     element: <CreateProfileUser />,
   },
-];
+  {
+    path: '/create-profile-company',
+    element: <CreateProfileCompany />,
+  },
+  {
+    path: '/search-job',
+    element: <SearchJob />,
+  },
+]
 
-export default AppRoutes;
+export default AppRoutes

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fH+kNTLO5SkUsYIVHDyM4Excis7GtiRA0zxI5O3RLkEnJdVsV/CVqKCls9KvAO7N1P+PTW3iC7ZK9FeBlmfFlA==",
+  "success": true,
+  "projectFilePath": "/Users/sgall/Projects/talentojr/talentojr.csproj",
+  "expectedPackageFiles": [
+    "/Users/sgall/.nuget/packages/microsoft.aspnetcore.spaproxy/7.0.9/microsoft.aspnetcore.spaproxy.7.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
