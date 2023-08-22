@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SignUp = () => {
+  const [register, setRegister] = useState({
+    usuario: "",
+    contraseña: "",
+    tipoUsuario: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setRegister((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+    console.log("Text values:", register);
+  };
+
   return (
     <div className="container mt-5">
       <div className="row mx-auto d-flex align-items-center justify-content-evenly">
@@ -26,11 +46,17 @@ const SignUp = () => {
                 type="text"
                 placeholder="usuario"
                 className="form-control mb-3 rounded-5"
+                name="usuario"
+                value={register.usuario}
+                onChange={handleInputChange}
               />
               <input
-                type="text"
+                type="password"
                 placeholder="contraseña"
                 className="form-control rounded-5"
+                name="contraseña"
+                value={register.contraseña}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -43,8 +69,11 @@ const SignUp = () => {
                     <input
                       type="radio"
                       className="form-check-input"
-                      id="remember"
-                      name="registro"
+                      id="buscasEmpleo"
+                      name="tipoUsuario"
+                      value="candidato"
+                      checked={register.tipoUsuario === "candidato"}
+                      onChange={handleInputChange}
                     />
                     <label
                       htmlFor="remember"
@@ -59,8 +88,11 @@ const SignUp = () => {
                     <input
                       type="radio"
                       className="form-check-input"
-                      id="remember"
-                      name="registro"
+                      id="deseaContratar"
+                      name="tipoUsuario"
+                      value="empresa"
+                      checked={register.tipoUsuario === "empresa"}
+                      onChange={handleInputChange}
                     />
                     <label
                       htmlFor="remember"
@@ -80,6 +112,7 @@ const SignUp = () => {
               <button
                 className="btn btn-primary text-md rounded-5 shadow-lg py-2"
                 type="button"
+                onClick={handleButtonClick}
               >
                 Registrate
               </button>

@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
 const CreateJob = () => {
+  const [job, sethandleJob] = useState({
+    titleJob: "",
+    description: "",
+    location: "",
+    modeOfWork: "",
+    skills: [""],
+    salaryRange: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    sethandleJob((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+    console.log("Text values:", job);
+  };
+
   return (
     <div className="container-fluid mb-5">
       <div className="row justify-content-center align-items-center">
@@ -12,7 +34,9 @@ const CreateJob = () => {
                 type="text"
                 className="form-control bg-light"
                 id="title"
-                required
+                name="titleJob"
+                value={job.titleJob}
+                onChange={handleInputChange}
                 placeholder="Titulo de trabajo"
               />
             </div>
@@ -21,6 +45,9 @@ const CreateJob = () => {
                 className="form-control bg-light"
                 id="description"
                 rows="3"
+                value={job.description}
+                onChange={handleInputChange}
+                name="description"
                 required
                 placeholder="Descripción de trabajo"
               ></textarea>
@@ -30,18 +57,28 @@ const CreateJob = () => {
                 type="text"
                 className="form-control bg-light"
                 id="location"
+                name="location"
+                value={job.location}
+                onChange={handleInputChange}
                 required
                 placeholder="Ubicación de trabajo"
               />
             </div>
             <div className="mb-3">
-              <select className="form-select bg-light" id="modeOfWork" required>
+              <select
+                className="form-select bg-light"
+                id="modeOfWork"
+                value={job.modeOfWork}
+                onChange={handleInputChange}
+                name="modeOfWork"
+                required
+              >
                 <option value="" disabled defaultValue>
                   Modalidad de trabajo
                 </option>
-                <option value="fullTime">Tiemp completo</option>
-                <option value="partTime">Tiempo parcial</option>
-                <option value="remote">Remoto</option>
+                <option value="Tiempo completo">Tiemp completo</option>
+                <option value="Tiempo parcial">Tiempo parcial</option>
+                <option value="Remoto">Remoto</option>
               </select>
             </div>
             <div className="mb-3">
@@ -52,6 +89,9 @@ const CreateJob = () => {
                 type="text"
                 className="form-control bg-light"
                 id="skills"
+                name="skills"
+                value={job.skills}
+                onChange={handleInputChange}
                 required
                 placeholder="Tecnologias"
               />
@@ -61,11 +101,18 @@ const CreateJob = () => {
                 type="text"
                 className="form-control bg-light"
                 id="salaryRange"
+                value={job.salaryRange}
+                name="salaryRange"
+                onChange={handleInputChange}
                 required
                 placeholder="Rango de salario"
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleButtonClick}
+            >
               Crear
             </button>
           </form>
