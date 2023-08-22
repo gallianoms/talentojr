@@ -1,59 +1,59 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React from 'react'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
-import { AiOutlineMail } from 'react-icons/ai'
-import { AiOutlinePhone } from 'react-icons/ai'
+import React from "react";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { AiOutlineMail } from "react-icons/ai";
+import { AiOutlinePhone } from "react-icons/ai";
 
 const Home = () => {
   return (
     <>
       {/* Hero section */}
-      <section id='hero'>
-        <div className='container'>
-          <div className='row'>
+      <section id="hero">
+        <div className="container">
+          <div className="row">
             <div
-              className='col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center mt-5'
-              data-aos='fade-up'
+              className="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center mt-5"
+              data-aos="fade-up"
             >
               <div>
-                <h1 className='mb-3'>
+                <h1 className="mb-3">
                   Navega hacia tu primer empleo en tecnología
                 </h1>
-                <h2 className='mb-3 text-lg'>
+                <h2 className="mb-3 text-lg">
                   Te aceleramos el acceso al mundo laboral en TI para ti,
                   conectándolos con empresas en busca de talento junior y
                   primeros pasos en sus carreras.
                 </h2>
-                <a href='#about' className='btn-get-started scrollto'>
+                <a href="#about" className="btn-get-started scrollto">
                   Contrata o se contratado
                 </a>
               </div>
             </div>
             <div
-              className='col-lg-6 order-1 order-lg-2 hero-img'
-              data-aos='fade-left'
+              className="col-lg-6 order-1 order-lg-2 hero-img d-flex justify-content-center"
+              data-aos="fade-left"
             >
-              <img src='/img/hero-img.png' className='img-fluid w-75' alt='' />
+              <img src="/img/hero-img.png" className="img-fluid w-75" alt="" />
             </div>
           </div>
         </div>
       </section>
 
-      <main id='main'>
+      <main id="main">
         {/* Section about */}
-        <section id='about' className='about' data-aos='fade-up'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-lg-6' data-aos='zoom-in'>
-                <img src='/img/about.jpg' className='img-fluid' alt='' />
+        <section id="about" className="about" data-aos="fade-up">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6" data-aos="zoom-in">
+                <img src="/img/about.jpg" className="img-fluid" alt="" />
               </div>
               <div
-                className='col-lg-6 d-flex flex-column justify-contents-center'
-                data-aos='fade-left'
+                className="col-lg-6 d-flex flex-column justify-contents-center"
+                data-aos="fade-left"
               >
-                <div className='content pt-4 pt-lg-0'>
+                <div className="content pt-4 pt-lg-0">
                   <h3>Aprende mas sobre nosotros</h3>
-                  <p className='fst-italic'>
+                  <p className="fst-italic">
                     Nuestra plataforma busca servir como un puente entre
                     empresas que buscan talento junior y personas que están
                     comenzando sus carreras en el campo de TI.
@@ -83,103 +83,103 @@ const Home = () => {
       </main>
 
       {/* latest offers */}
-      <section id='team' className='team section-bg' data-aos='fade-up'>
-        <div className='container mb-5 mt-5'>
-          <div className='section-title'>
+      <section id="team" className="team section-bg" data-aos="fade-up">
+        <div className="container mb-5 mt-5">
+          <div className="section-title">
             <h2>Ofertas recientes</h2>
           </div>
-          <div className='row'>
-            <div className='col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0'>
-              <div className='icon-box icon-box-pink'>
-                <div className='icon'>
-                  <i className='bx bxl-dribbble'></i>
+          <div className="row">
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+              <div className="icon-box icon-box-pink">
+                <div className="icon">
+                  <i className="bx bxl-dribbble"></i>
                 </div>
-                <h4 className='title'>Lorem Ipsum</h4>
-                <p className='description'>
+                <h4 className="title">Lorem Ipsum</h4>
+                <p className="description">
                   Voluptatum deleniti atque corrupti quos dolores et quas
                   molestias excepturi sint occaecati cupiditate
                 </p>
-                <a href='#offers' className='link-offers'>
+                <a href="#offers" className="link-offers">
                   Ver ofertas
                 </a>
               </div>
             </div>
 
-            <div className='col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0'>
-              <div className='icon-box icon-box-cyan'>
-                <div className='icon'>
-                  <i className='bx bx-file'></i>
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+              <div className="icon-box icon-box-cyan">
+                <div className="icon">
+                  <i className="bx bx-file"></i>
                 </div>
-                <h4 className='title'>Sed ut perspiciatis</h4>
-                <p className='description'>
+                <h4 className="title">Sed ut perspiciatis</h4>
+                <p className="description">
                   Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla
                 </p>
-                <a href='#offers' className='link-offers'>
+                <a href="#offers" className="link-offers">
                   Ver ofertas
                 </a>
               </div>
             </div>
 
-            <div className='col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0'>
-              <div className='icon-box icon-box-green'>
-                <div className='icon'>
-                  <i className='bx bx-tachometer'></i>
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+              <div className="icon-box icon-box-green">
+                <div className="icon">
+                  <i className="bx bx-tachometer"></i>
                 </div>
-                <h4 className='title'>Magni Dolores</h4>
-                <p className='description'>
+                <h4 className="title">Magni Dolores</h4>
+                <p className="description">
                   Excepteur sint occaecat cupidatat non proident, sunt in culpa
                   qui officia deserunt mollit anim
                 </p>
-                <a href='#offers' className='link-offers'>
+                <a href="#offers" className="link-offers">
                   Ver ofertas
                 </a>
               </div>
             </div>
 
-            <div className='col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0'>
-              <div className='icon-box icon-box-blue'>
-                <div className='icon'>
-                  <i className='bx bx-world'></i>
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0">
+              <div className="icon-box icon-box-blue">
+                <div className="icon">
+                  <i className="bx bx-world"></i>
                 </div>
-                <h4 className='title'>Nemo Enim</h4>
-                <p className='description'>
+                <h4 className="title">Nemo Enim</h4>
+                <p className="description">
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui
                   blanditiis praesentium voluptatum
                 </p>
-                <a href='#offers' className='link-offers'>
+                <a href="#offers" className="link-offers">
                   Ver ofertas
                 </a>
               </div>
             </div>
 
-            <div className='col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0'>
-              <div className='icon-box icon-box-green'>
-                <div className='icon'>
-                  <i className='bx bx-tachometer'></i>
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0">
+              <div className="icon-box icon-box-green">
+                <div className="icon">
+                  <i className="bx bx-tachometer"></i>
                 </div>
-                <h4 className='title'>Magni Dolores</h4>
-                <p className='description'>
+                <h4 className="title">Magni Dolores</h4>
+                <p className="description">
                   Excepteur sint occaecat cupidatat non proident, sunt in culpa
                   qui officia deserunt mollit anim
                 </p>
-                <a href='#offers' className='link-offers'>
+                <a href="#offers" className="link-offers">
                   Ver ofertas
                 </a>
               </div>
             </div>
 
-            <div className='col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0'>
-              <div className='icon-box icon-box-green'>
-                <div className='icon'>
-                  <i className='bx bx-tachometer'></i>
+            <div className="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mt-3 mb-lg-0">
+              <div className="icon-box icon-box-green">
+                <div className="icon">
+                  <i className="bx bx-tachometer"></i>
                 </div>
-                <h4 className='title'>Magni Dolores</h4>
-                <p className='description'>
+                <h4 className="title">Magni Dolores</h4>
+                <p className="description">
                   Excepteur sint occaecat cupidatat non proident, sunt in culpa
                   qui officia deserunt mollit anim
                 </p>
-                <a href='#offers' className='link-offers'>
+                <a href="#offers" className="link-offers">
                   Ver ofertas
                 </a>
               </div>
@@ -190,56 +190,59 @@ const Home = () => {
         {/* FAQS section */}
         <h1>Preguntas frecuentes</h1>
         <div
-          className='accordion accordion-flush'
-          id='accordionFlushExample'
-          data-aos='fade-up'
+          className="accordion accordion-flush"
+          id="accordionFlushExample"
+          data-aos="fade-up"
         >
-          <div className='accordion-item'>
-            <h2 className='accordion-header' id='flush-headingOne'>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingOne">
               <button
-                className='accordion-button collapsed'
-                type='button'
-                data-bs-toggle='collapse'
-                data-bs-target='#flush-collapseOne'
-                aria-expanded='false'
-                aria-controls='flush-collapseOne'
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
               >
-                Accordion Item #1
+                <strong>¿Cómo funciona su plataforma?</strong>
               </button>
             </h2>
             <div
-              id='flush-collapseOne'
-              className='accordion-collapse collapse'
-              aria-labelledby='flush-headingOne'
-              data-bs-parent='#accordionFlushExample'
+              id="flush-collapseOne"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample"
             >
-              <div className='accordion-body'>
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                first item's accordion body.
+              <div className="accordion-body">
+                Nuestra plataforma busca servir como un puente entre empresas
+                que buscan talento junior y personas que están comenzando sus
+                carreras en el campo de TI.
               </div>
             </div>
           </div>
-          <div className='accordion-item'>
-            <h2 className='accordion-header' id='flush-headingTwo'>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingTwo">
               <button
-                className='accordion-button collapsed'
-                type='button'
-                data-bs-toggle='collapse'
-                data-bs-target='#flush-collapseTwo'
-                aria-expanded='false'
-                aria-controls='flush-collapseTwo'
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
               >
-                Accordion Item #2
+                <strong>
+                  ¿Cómo se seleccionan y evalúan a los desarrolladores junior en
+                  su plataforma?
+                </strong>
               </button>
             </h2>
             <div
-              id='flush-collapseTwo'
-              className='accordion-collapse collapse'
-              aria-labelledby='flush-headingTwo'
-              data-bs-parent='#accordionFlushExample'
+              id="flush-collapseTwo"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingTwo"
+              data-bs-parent="#accordionFlushExample"
             >
-              <div className='accordion-body'>
+              <div className="accordion-body">
                 Placeholder content for this accordion, which is intended to
                 demonstrate the <code>.accordion-flush</code> class. This is the
                 second item's accordion body. Let's imagine this being filled
@@ -247,32 +250,115 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='accordion-item'>
-            <h2 className='accordion-header' id='flush-headingThree'>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingThree">
               <button
-                className='accordion-button collapsed'
-                type='button'
-                data-bs-toggle='collapse'
-                data-bs-target='#flush-collapseThree'
-                aria-expanded='false'
-                aria-controls='flush-collapseThree'
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
               >
-                Accordion Item #3
+                <strong>
+                  ¿Puedo ver ejemplos de trabajos anteriores de los
+                  desarrolladores junior?
+                </strong>
               </button>
             </h2>
             <div
-              id='flush-collapseThree'
-              className='accordion-collapse collapse'
-              aria-labelledby='flush-headingThree'
-              data-bs-parent='#accordionFlushExample'
+              id="flush-collapseThree"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingThree"
+              data-bs-parent="#accordionFlushExample"
             >
-              <div className='accordion-body'>
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
+              <div className="accordion-body">
+                Sí, podemos proporcionar ejemplos de proyectos previos para
+                demostrar la capacidad de nuestros desarrolladores junior.
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingFour">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour"
+                aria-expanded="false"
+                aria-controls="flush-collapseFour"
+              >
+                <strong>
+                  ¿Qué medidas de seguridad tienen en su plataforma?
+                </strong>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFour"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingFour"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+                Implementamos medidas de seguridad para proteger la información
+                confidencial y garantizar la privacidad de los datos.
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingFive">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFive"
+                aria-expanded="false"
+                aria-controls="flush-collapseFive"
+              >
+                <strong>
+                  ¿Qué sucede si no estamos satisfechos con el trabajo de un
+                  desarrollador junior?
+                </strong>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFive"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingFive"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+                Trabajaremos para resolver cualquier problema y, si es
+                necesario, encontraremos soluciones alternativas para asegurar
+                su satisfacción.
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingSix">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseSix"
+                aria-expanded="false"
+                aria-controls="flush-collapseSix"
+              >
+                <strong>
+                  ¿Cómo nos ponemos en contacto con su equipo de soporte si
+                  tenemos alguna pregunta o problema?
+                </strong>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseSix"
+              className="accordion-collapse collapse"
+              aria-labelledby="flush-headingSix"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+                Pueden ponerse en contacto con nuestro equipo de soporte a
+                través de chat en vivo, correo electrónico o teléfono.
               </div>
             </div>
           </div>
@@ -282,99 +368,99 @@ const Home = () => {
       </section>
 
       {/* <!-- ======= Contact Section ======= --> */}
-      <section id='contact' className='contact section-bg mt-5 mb-5'>
-        <div className='container'>
-          <div className='section-title' data-aos='fade-up'>
+      <section id="contact" className="contact section-bg mt-5 mb-5">
+        <div className="container">
+          <div className="section-title" data-aos="fade-up">
             <h2>Contacta con nosotros</h2>
           </div>
 
-          <div className='row'>
+          <div className="row">
             <div
-              className='col-lg-5 d-flex align-items-stretch'
-              data-aos='fade-right'
+              className="col-lg-5 d-flex align-items-stretch"
+              data-aos="fade-right"
             >
-              <div className='info'>
-                <div className='address'>
-                  <i className='bi bi-geo-alt'>
+              <div className="info">
+                <div className="address">
+                  <i className="bi bi-geo-alt">
                     <HiOutlineLocationMarker />
                   </i>
                   <h4>Location:</h4>
                   <p>C/ D'en Llastics 2, 08003 Barcelona</p>
                 </div>
 
-                <div className='email'>
-                  <i className='bi bi-envelope'>
+                <div className="email">
+                  <i className="bi bi-envelope">
                     <AiOutlineMail />
                   </i>
                   <h4>Email:</h4>
                   <p>talentojr@gmail.com</p>
                 </div>
 
-                <div className='phone'>
-                  <i className='bi bi-phone'>
+                <div className="phone">
+                  <i className="bi bi-phone">
                     <AiOutlinePhone />
                   </i>
                   <h4>Call:</h4>
                   <p>+1 5589 55488 55s</p>
                 </div>
                 <iframe
-                  src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d748.3370839395462!2d2.1795248!3d41.388241!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3b369fa8b5b%3A0x7a8065656d2cbe0!2sFundesplai%20-%20Centre%20de%20Formaci%C3%B3%20Ll%C3%A0stics!5e0!3m2!1sen!2ses!4v1692093487992!5m2!1sen!2ses'
-                  allowFullScreen=''
-                  className='iframe'
-                  loading='lazy'
-                  reFerrerPolicy='no-referrer-when-downgrade'
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d748.3370839395462!2d2.1795248!3d41.388241!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3b369fa8b5b%3A0x7a8065656d2cbe0!2sFundesplai%20-%20Centre%20de%20Formaci%C3%B3%20Ll%C3%A0stics!5e0!3m2!1sen!2ses!4v1692093487992!5m2!1sen!2ses"
+                  allowFullScreen=""
+                  className="iframe"
+                  loading="lazy"
+                  reFerrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
             </div>
 
             <div
-              className='col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch'
-              data-aos='fade-left'
+              className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch"
+              data-aos="fade-left"
             >
               <form>
-                <div className='row'>
-                  <div className='form-group col-md-6'>
+                <div className="row">
+                  <div className="form-group col-md-6">
                     <label>Your Name</label>
                     <input
-                      type='text'
-                      name='name'
-                      className='form-control'
-                      id='name'
+                      type="text"
+                      name="name"
+                      className="form-control"
+                      id="name"
                       required
                     />
                   </div>
-                  <div className='form-group col-md-6 mt-3 mt-md-0'>
+                  <div className="form-group col-md-6 mt-3 mt-md-0">
                     <label>Your Email</label>
                     <input
-                      type='email'
-                      className='form-control'
-                      name='email'
-                      id='email'
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      id="email"
                       required
                     />
                   </div>
                 </div>
-                <div className='form-group mt-3'>
+                <div className="form-group mt-3">
                   <label>Subject</label>
                   <input
-                    type='text'
-                    className='form-control'
-                    name='subject'
-                    id='subject'
+                    type="text"
+                    className="form-control"
+                    name="subject"
+                    id="subject"
                     required
                   />
                 </div>
-                <div className='form-group mt-3'>
+                <div className="form-group mt-3">
                   <label>Message</label>
                   <textarea
-                    className='form-control'
-                    name='message'
-                    rows='10'
+                    className="form-control"
+                    name="message"
+                    rows="10"
                     required
                   ></textarea>
                 </div>
-                <div className='text-center mt-3'>
-                  <a href='#contact' className='btn-get-started'>
+                <div className="text-center mt-3">
+                  <a href="#contact" className="btn-get-started">
                     Send Message
                   </a>
                 </div>
@@ -386,10 +472,10 @@ const Home = () => {
       {/* <!-- End Contact Section --> */}
 
       {/* Footer section */}
-      <footer id='footer'>
-        <div className='container'>
-          <div className='copyright'>
-            &copy; Copyright{' '}
+      <footer id="footer">
+        <div className="container">
+          <div className="copyright">
+            &copy; Copyright{" "}
             <strong>
               <span>TalentoJr</span>
             </strong>
@@ -398,7 +484,7 @@ const Home = () => {
         </div>
       </footer>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -2,7 +2,7 @@
 "SpaProxyServer": {
 "ServerUrl": "https://localhost:44478",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "/Users/sgall/Projects/talentojr/ClientApp/",
+"WorkingDirectory": "D:\\Wintop Files\\Proyecto-final\\talentojr\\ClientApp\\",
 "MaxTimeoutInSeconds": "120"
 }
 }
