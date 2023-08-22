@@ -1,4 +1,3 @@
-import { FetchData } from "./components/FetchData";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
@@ -13,10 +12,6 @@ const AppRoutes = [
   {
     index: true,
     element: <Home />,
-  },
-  {
-    path: "/fetch-data",
-    element: <FetchData />,
   },
   {
     path: "/login",
