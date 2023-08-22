@@ -1,20 +1,18 @@
-import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import CreateProfileUser from "./components/CreateProfileUser";
-import CreateJob from "./components/CreateJob";
+import CreateProfileCompany from "./components/CreateProfileCompany";
+import SearchJob from "./components/SearchJob";
 import Candidates from "./components/Candidates";
+import CreateJob from "./components/CreateJob";
+import ListJob from "./components/ListJob";
 
 const AppRoutes = [
   {
     index: true,
     element: <Home />,
-  },
-  {
-    path: "/counter",
-    element: <Counter />,
   },
   {
     path: "/fetch-data",
@@ -29,17 +27,28 @@ const AppRoutes = [
     element: <SignUp />,
   },
   {
-    path: "/candidatos",
-    element: <Candidates />,
-  },
-  {
     path: "/create-profile-user",
     element: <CreateProfileUser />,
   },
-
   {
-    path: "/create-job",
+    path: "/create-profile-company",
+    element: <CreateProfileCompany />,
+  },
+  {
+    path: "/search-job",
+    element: <SearchJob />,
+  },
+  {
+    path: "/createJob",
     element: <CreateJob />,
+  },
+  {
+    path: "/listJob",
+    element: <ListJob />,
+  },
+  {
+    path: "/candidatos",
+    element: <Candidates />,
   },
 ];
 

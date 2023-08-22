@@ -39,8 +39,8 @@ export class NavMenu extends Component {
           <NavbarBrand
             tag={Link}
             to='/'
-            style={{ color: '#fff' }}
-            className='py-2'
+            style={{ color: '#fff', fontSize: '22px', fontWeight: '500' }}
+            className='py-2 '
           >
             TalentoJr.
           </NavbarBrand>
@@ -51,15 +51,21 @@ export class NavMenu extends Component {
             navbar
           >
             <ul className='navbar-nav flex-grow'>
-              {/* <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+              <NavItem>
+                <NavLink tag={Link} className='text-light' to='/'>
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
+                <NavLink tag={Link} className='text-light' to='/counter'>
+                  Counter
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-              </NavItem> */}
+                <NavLink tag={Link} className='text-light' to='/fetch-data'>
+                  Fetch data
+                </NavLink>
+              </NavItem>
             </ul>
           </Collapse>
         </Navbar>

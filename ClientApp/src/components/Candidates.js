@@ -1,43 +1,81 @@
 import React from "react";
+import { BsBoxArrowRight } from "react-icons/bs";
 
 const Candidates = () => {
   return (
-    <section class="intro">
-      <div class="bg-image mt-5">
-        <div class=" d-flex align-items-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-12">
+    <section className="intro">
+      <div className="bg-image mt-5">
+        <div className=" d-flex align-items-center">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12">
                 <h1 className="mb-3">Lista de Candidatos</h1>
-                <div class="card">
-                  <div class="card-body p-0">
-                    <div
-                      class="table-responsive table-scroll"
-                      data-mdb-perfect-scrollbar="true"
-                    >
-                      <table class="table table-striped mb-0">
+                <div className="card">
+                  <div className="card-body p-0">
+                    <div data-mdb-perfect-scrollbar="true">
+                      <table className="table table-striped mb-0">
                         <thead>
                           <tr>
                             <th scope="col">Nombre y apellidos</th>
-                            <th scope="col">Oferta</th>
+                            <th scope="col">Oferta Inscrita</th>
                             <th scope="col">Estado</th>
+                            <th scope="col">Ver perfil</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>Like a butterfly</td>
                             <td>Boxing</td>
-                            <td>9:00 AM - 11:00 AM</td>
+                            <td>
+                              <form>
+                                <select className="form-select">
+                                  <option>Morning</option>
+                                  <option>Afternoon</option>
+                                  <option>Evening</option>
+                                </select>
+                              </form>
+                            </td>
+                            <td>
+                              <a href="hola">
+                                <BsBoxArrowRight />
+                              </a>
+                            </td>
                           </tr>
                           <tr>
                             <td>Mind &amp; Body</td>
                             <td>Yoga</td>
-                            <td>8:00 AM - 9:00 AM</td>
+                            <td>
+                              <form>
+                                <select className="form-select">
+                                  <option>Morning</option>
+                                  <option>Afternoon</option>
+                                  <option>Evening</option>
+                                </select>
+                              </form>
+                            </td>
+                            <td>
+                              <a href="hola">
+                                <BsBoxArrowRight />
+                              </a>
+                            </td>
                           </tr>
                           <tr>
                             <td>Crit Cardio</td>
                             <td>Gym</td>
-                            <td>9:00 AM - 10:00 AM</td>
+                            <td>
+                              <form>
+                                <select className="form-select">
+                                  <option>Morning</option>
+                                  <option>Afternoon</option>
+                                  <option>Evening</option>
+                                </select>
+                              </form>
+                            </td>
+                            <td>
+                              <a href="hola">
+                                <BsBoxArrowRight />
+                              </a>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
