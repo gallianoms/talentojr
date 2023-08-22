@@ -1,16 +1,11 @@
 import React from 'react'
 
-const Login = () => {
+const SignUpPage = () => {
   return (
     <div className='container mt-5'>
       <div className='row mx-auto d-flex align-items-center justify-content-evenly'>
         <div className='col-lg-4 d-none d-sm-block'>
-          <img
-            src='https://static.vecteezy.com/system/resources/previews/016/757/184/original/3d-padlock-key-icon-with-password-insecure-isolated-security-data-protection-minimal-concept-3d-render-illustration-png.png'
-            alt=''
-            width='420'
-            height='420'
-          />
+          <img src='/img/rocket.png' alt='' width='420' height='420' />
         </div>
         <div
           className='col-lg-3 mt-4 rounded-5 px-lg-1 px-4'
@@ -20,14 +15,16 @@ const Login = () => {
           <div className='row mt-4'>
             <div className='col-lg-12'>
               <h3 className='text-center'>Bienvenido</h3>
-              <p className='text-center fw-light '>Por favor entre sus datos</p>
+              <p className='text-center fw-light '>
+                Registrate si no tienes cuenta
+              </p>
             </div>
           </div>
           <div className='row d-flex justify-content-center mt-2'>
             <div className='col-lg-11'>
               <input
                 type='text'
-                placeholder='correo'
+                placeholder='usuario'
                 className='form-control mb-3 rounded-5'
               />
               <input
@@ -40,26 +37,38 @@ const Login = () => {
           {/* Remember me + Forgot password */}
           <div className='row d-flex justify-content-center mt-3'>
             <div className='col-lg-12'>
-              <div className='row row-cols-auto d-flex justify-content-lg-center justify-content-evenly'>
+              <div className='row row-cols-auto d-flex justify-content-lg-center justify-content-between'>
                 <div className='col-lg-4 d-flex align-self-center'>
                   <div className='form-check'>
                     <input
-                      type='checkbox'
+                      type='radio'
                       className='form-check-input'
                       id='remember'
+                      name='registro'
                     />
                     <label
                       htmlFor='remember'
                       className='form-check-label fw-light text-sm'
                     >
-                      Recuerdame
+                      Buscas empleo
                     </label>
                   </div>
                 </div>
-                <div className='col-lg-7  d-flex align-self-center'>
-                  <a href='/recovery-pass' className='text-primary text-sm'>
-                    ¿Olvidaste tu contraseña?
-                  </a>
+                <div className='col-lg-4 d-flex align-self-center'>
+                  <div className='form-check'>
+                    <input
+                      type='radio'
+                      className='form-check-input'
+                      id='remember'
+                      name='registro'
+                    />
+                    <label
+                      htmlFor='remember'
+                      className='form-check-label fw-light text-sm'
+                    >
+                      Desea contratar
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -72,7 +81,7 @@ const Login = () => {
                 className='btn btn-primary text-md rounded-5 shadow-lg py-2'
                 type='button'
               >
-                Iniciar Sesión
+                Registrate
               </button>
               <button
                 className='btn btn-secondary text-sm rounded-5 d-flex justify-content-center align-items-center py-2'
@@ -93,9 +102,9 @@ const Login = () => {
           {/* Sign Up */}
           <div className='row mt-4'>
             <div className='col-lg-12 d-flex justify-content-center'>
-              <span className='fw-light text-md'>¿No tienes una cuenta?</span>
-              <a href='/signup' className='ps-2 fw-bold text-primary text-md'>
-                Regístrate
+              <span className='fw-light text-md'>Ya tienes una cuenta?</span>
+              <a href='/login' className='ps-2 fw-bold text-primary text-md'>
+                Login
               </a>
             </div>
           </div>
@@ -105,4 +114,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUpPage

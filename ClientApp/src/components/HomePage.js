@@ -4,7 +4,7 @@ import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { AiOutlineMail } from 'react-icons/ai'
 import { AiOutlinePhone } from 'react-icons/ai'
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       {/* Hero section */}
@@ -401,4 +401,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

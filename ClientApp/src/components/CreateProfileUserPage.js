@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CreateProfileUser = () => {
+const CreateProfileUserPage = () => {
   const [imageProfileSrc, setImageProfileSrc] = useState(
     'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-4.png'
   )
@@ -575,4 +575,4 @@ const CreateProfileUser = () => {
   )
 }
 
-export default CreateProfileUser
+export default CreateProfileUserPage

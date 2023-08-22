@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CreateProfileCompany = () => {
+const CreateProfileCompanyPage = () => {
   const [imageProfileSrc, setImageProfileSrc] = useState(
     'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-4.png'
   )
@@ -186,4 +186,4 @@ const CreateProfileCompany = () => {
   )
 }
 
-export default CreateProfileCompany
+export default CreateProfileCompanyPage

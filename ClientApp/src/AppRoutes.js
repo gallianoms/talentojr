@@ -1,15 +1,16 @@
 import { FetchData } from './components/FetchData'
-import Home from './components/Home'
-import Login from './components/Login'
-import SignUp from './components/SignUp'
-import CreateProfileUser from './components/CreateProfileUser'
-import CreateProfileCompany from './components/CreateProfileCompany'
-import SearchJob from './components/SearchJob'
+import HomePage from './components/HomePage'
+import LoginPage from './components/LoginPage'
+import SignUpPage from './components/SignUpPage'
+import CreateProfileUserPage from './components/CreateProfileUserPage'
+import CreateProfileCompanyPage from './components/CreateProfileCompanyPage'
+import SearchJobPage from './components/SearchJobPage'
+import CandidateProfilePage from './components/CandidateProfilePage'
 
 const AppRoutes = [
   {
     index: true,
-    element: <Home />,
+    element: <HomePage />,
   },
   {
     path: '/fetch-data',
@@ -17,23 +18,27 @@ const AppRoutes = [
   },
   {
     path: '/login',
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: '/signup',
-    element: <SignUp />,
+    element: <SignUpPage />,
   },
   {
     path: '/create-profile-user',
-    element: <CreateProfileUser />,
+    element: <CreateProfileUserPage />,
   },
   {
     path: '/create-profile-company',
-    element: <CreateProfileCompany />,
+    element: <CreateProfileCompanyPage />,
   },
   {
     path: '/search-job',
-    element: <SearchJob />,
+    element: <SearchJobPage />,
+  },
+  {
+    path: '/perfil-candidato',
+    element: <CandidateProfilePage />,
   },
 ]
 
