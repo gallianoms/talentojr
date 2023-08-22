@@ -34,11 +34,11 @@ const AppRoutes = [
     element: <SearchJob />,
   },
   {
-    path: "/createJob",
+    path: "/create-job",
     element: <CreateJob />,
   },
   {
-    path: "/listJob",
+    path: "/list-job",
     element: <ListJob />,
   },
   {
