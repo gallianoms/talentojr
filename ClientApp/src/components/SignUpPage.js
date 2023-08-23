@@ -8,7 +8,7 @@ const SignUpPage = () => {
           <img src='/img/rocket.png' alt='' width='420' height='420' />
         </div>
         <div
-          className='col-lg-3 mt-4 rounded-5 px-lg-1 px-4'
+          className='col-lg-3 mt-4 rounded-1 px-lg-1 px-4'
           style={{ height: '470px', backgroundColor: '#f3f4f6' }}
         >
           {/* Input Email + Input Password */}
@@ -24,13 +24,13 @@ const SignUpPage = () => {
             <div className='col-lg-11'>
               <input
                 type='text'
-                placeholder='usuario'
-                className='form-control mb-3 rounded-5'
+                placeholder='correo'
+                className='form-control mb-3 rounded-1'
               />
               <input
                 type='text'
                 placeholder='contraseña'
-                className='form-control rounded-5'
+                className='form-control rounded-1'
               />
             </div>
           </div>
@@ -78,13 +78,13 @@ const SignUpPage = () => {
           <div className='row mt-5 d-flex justify-content-center'>
             <div className='col-lg-11 d-grid gap-3 '>
               <button
-                className='btn btn-primary text-md rounded-5 shadow-lg py-2'
+                className='btn btn-primary text-md rounded-1 shadow-lg py-2'
                 type='button'
               >
                 Registrate
               </button>
               <button
-                className='btn btn-secondary text-sm rounded-5 d-flex justify-content-center align-items-center py-2'
+                className='btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2'
                 type='button'
               >
                 <img
@@ -102,9 +102,12 @@ const SignUpPage = () => {
           {/* Sign Up */}
           <div className='row mt-4'>
             <div className='col-lg-12 d-flex justify-content-center'>
-              <span className='fw-light text-md'>Ya tienes una cuenta?</span>
-              <a href='/login' className='ps-2 fw-bold text-primary text-md'>
-                Login
+              <span className='fw-light text-md'>¿Ya tienes una cuenta?</span>
+              <a
+                href='/iniciar-sesion'
+                className='ps-2 fw-bold text-primary text-md'
+              >
+                Iniciar sesion
               </a>
             </div>
           </div>

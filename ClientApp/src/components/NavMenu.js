@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import {
   Collapse,
   Navbar,
@@ -10,66 +10,116 @@ import {
 import { Link } from 'react-router-dom'
 import './NavMenu.css'
 
-export class NavMenu extends Component {
-  static displayName = NavMenu.name
+export const NavMenu = () => {
+  const [collapsed, setCollapsed] = useState(true)
+  const [isCandidate, setIsCandidate] = useState(false)
 
-  constructor(props) {
-    super(props)
-
-    this.toggleNavbar = this.toggleNavbar.bind(this)
-    this.state = {
-      collapsed: true,
-    }
+  const toggleNavbar = () => {
+    setCollapsed(!collapsed)
   }
 
-  toggleNavbar() {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    })
-  }
-
-  render() {
-    return (
-      <header>
-        <Navbar
-          className='navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3'
-          style={{ backgroundColor: '#6366f1' }}
-          container
+  return (
+    <header>
+      <Navbar
+        className='navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3'
+        style={{ backgroundColor: '#6366f1' }}
+        container
+      >
+        <NavbarBrand
+          tag={Link}
+          to='/'
+          style={{ color: '#fff', fontSize: '22px', fontWeight: '500' }}
+          className='py-2 '
         >
-          <NavbarBrand
-            tag={Link}
-            to='/'
-            style={{ color: '#fff', fontSize: '22px', fontWeight: '500' }}
-            className='py-2 '
-          >
-            TalentoJr.
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className='mr-2' />
-          <Collapse
-            className='d-sm-inline-flex flex-sm-row-reverse'
-            isOpen={!this.state.collapsed}
-            navbar
-          >
+          TalentoJr.
+        </NavbarBrand>
+        <NavbarToggler onClick={toggleNavbar} className='mr-2' />
+        <Collapse
+          className='d-sm-inline-flex flex-sm-row-reverse'
+          isOpen={!collapsed}
+          navbar
+        >
+          {isCandidate ? (
             <ul className='navbar-nav flex-grow'>
               <NavItem>
-                <NavLink tag={Link} className='text-light' to='/'>
-                  Home
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/iniciar-sesion'
+                >
+                  Iniciar sesion
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className='text-light' to='/counter'>
-                  Counter
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/buscar-empleo'
+                >
+                  Buscar Empleo
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className='text-light' to='/fetch-data'>
-                  Fetch data
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/perfil-usuario'
+                >
+                  Mi Perfil
                 </NavLink>
               </NavItem>
             </ul>
-          </Collapse>
-        </Navbar>
-      </header>
-    )
-  }
+          ) : (
+            <ul className='navbar-nav flex-grow'>
+              <NavItem>
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/iniciar-sesion'
+                >
+                  Iniciar sesion
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/crear-empleo'
+                >
+                  Crear Empleo
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/lista-empleos'
+                >
+                  Mis Empleos
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/lista-candidatos'
+                >
+                  Candidatos
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={Link}
+                  className='text-light text-md '
+                  to='/perfil-empresa'
+                >
+                  Perfil de Empresa
+                </NavLink>
+              </NavItem>
+            </ul>
+          )}
+        </Collapse>
+      </Navbar>
+    </header>
+  )
 }

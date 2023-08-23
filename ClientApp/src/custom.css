@@ -63,7 +63,10 @@ body {
 }
 
 .text-light {
-  /* color: #f9fafb!important */
+  color: #f9fafb!important
+}
+.text-light:hover {
+  color: #d6dce6!important
 }
 
 .text-dark {
