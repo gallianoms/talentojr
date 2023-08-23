@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 
-const CreateProfileUser = () => {
+const CreateProfileUserPage = () => {
   const [imageProfileSrc, setImageProfileSrc] = useState(
     'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-4.png'
-  )
-
-  const [imageProjectOneSrc, setImageProjectOneSrc] = useState(
-    'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210401151214/What-is-Website.png'
   )
 
   const handleImageProfileChange = event => {
@@ -18,6 +14,10 @@ const CreateProfileUser = () => {
     }
   }
 
+  const [imageProjectOneSrc, setImageProjectOneSrc] = useState(
+    'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210401151214/What-is-Website.png'
+  )
+
   const handleImageProjectOneChange = event => {
     const selectedFile = event.target.files[0]
 
@@ -27,6 +27,74 @@ const CreateProfileUser = () => {
     }
   }
 
+  const handleLenguajesProgramacionChange = event => {
+    const selectedOptions = event.target.selectedOptions
+    const selectedValues = Array.from(selectedOptions).map(
+      option => option.value
+    )
+    setLenguajesProgramacion(selectedValues)
+  }
+
+  const handleHabilidadesBlandasChange = event => {
+    const selectedOptions = event.target.selectedOptions
+    const selectedValues = Array.from(selectedOptions).map(
+      option => option.value
+    )
+    setHabilidadesBlandas(selectedValues)
+  }
+
+  const [githubProfile, setGithubProfile] = useState('')
+  const [linkedinProfile, setLinkedinProfile] = useState('')
+  const [websiteUrl, setWebsiteUrl] = useState('')
+  const [nombre, setNombre] = useState('')
+  const [apellido, setApellido] = useState('')
+  const [telefono, setTelefono] = useState('')
+  const [localizacion, setLocalizacion] = useState('')
+  const [idioma, setIdioma] = useState('')
+  const [nivelEducacion, setNivelEducacion] = useState('')
+  const [lenguajesProgramacion, setLenguajesProgramacion] = useState([])
+  const [habilidadesBlandas, setHabilidadesBlandas] = useState([])
+  const [permisoTrabajo, setPermisoTrabajo] = useState(false)
+  const [cvFile, setCvFile] = useState(null)
+
+  const [nombreProyecto1, setNombreProyecto1] = useState('')
+  const [descripcionProyecto1, setDescripcionProyecto1] = useState('')
+  const [repositorioProyecto1, setRepositorioProyecto1] = useState('')
+  const [urlProyecto1, setUrlProyecto1] = useState('')
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+
+    const formData = new FormData()
+    formData.append('githubProfile', githubProfile)
+    formData.append('linkedinProfile', linkedinProfile)
+    formData.append('websiteUrl', websiteUrl)
+    formData.append('nombre', nombre)
+    formData.append('apellido', apellido)
+    formData.append('telefono', telefono)
+    formData.append('localizacion', localizacion)
+    formData.append('idioma', idioma)
+    formData.append('nivelEducacion', nivelEducacion)
+    formData.append(
+      'lenguajesProgramacion',
+      JSON.stringify(lenguajesProgramacion)
+    )
+    formData.append('habilidadesBlandas', JSON.stringify(habilidadesBlandas))
+    formData.append('permisoTrabajo', permisoTrabajo)
+    formData.append('cvFile', cvFile)
+
+    try {
+      const response = await fetch('URL_DE_LA_API', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (response.ok) {
+      } else {
+      }
+    } catch (error) {}
+  }
+  // NOT USED
   const [imageProjectTwoSrc, setImageProjectTwoSrc] = useState(
     'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210401151214/What-is-Website.png'
   )
@@ -52,10 +120,11 @@ const CreateProfileUser = () => {
       setImageProjectThreeSrc(imageUrl)
     }
   }
+  // END NOT USED
 
   return (
     <div className='container'>
-      <form className=''>
+      <form className='' onSubmit={handleSubmit}>
         <div className='row'>
           <div className='d-lg-flex border'>
             <div className='col-lg-8 mt-1 rounded-1 py-3'>
@@ -92,6 +161,10 @@ const CreateProfileUser = () => {
                           type='text'
                           placeholder='https://github.com/nombre'
                           className='form-control text-sm rounded-1'
+                          value={githubProfile}
+                          onChange={event =>
+                            setGithubProfile(event.target.value)
+                          }
                         />
                       </div>
                       <div className='d-flex gap-3 '>
@@ -104,6 +177,10 @@ const CreateProfileUser = () => {
                           type='text'
                           placeholder='https://www.linkedin.com/in/nombre/'
                           className='form-control text-sm rounded-1'
+                          value={linkedinProfile}
+                          onChange={event =>
+                            setLinkedinProfile(event.target.value)
+                          }
                         />
                       </div>
                       <div className='d-flex gap-3 '>
@@ -116,6 +193,8 @@ const CreateProfileUser = () => {
                           type='text'
                           placeholder='https://bento.me/nombre'
                           className='form-control text-sm rounded-1'
+                          value={websiteUrl}
+                          onChange={event => setWebsiteUrl(event.target.value)}
                         />
                       </div>
                     </div>
@@ -130,8 +209,9 @@ const CreateProfileUser = () => {
                       type='text'
                       className='form-control rounded-1 text-md'
                       id='nombre'
-                      required
                       placeholder='Ingrese su nombre'
+                      onChange={event => setNombre(event.target.value)}
+                      value={nombre}
                     />
                     <label htmlFor='nombre' className='form-label text-md'>
                       Nombre
@@ -142,8 +222,9 @@ const CreateProfileUser = () => {
                       type='text'
                       className='form-control rounded-1 text-md '
                       id='apellido'
-                      required
                       placeholder='Ingrese su apellido'
+                      onChange={event => setApellido(event.target.value)}
+                      value={apellido}
                     />
                     <label htmlFor='apellido' className='form-label text-md'>
                       Apellido(s)
@@ -154,8 +235,8 @@ const CreateProfileUser = () => {
                       type='number'
                       className='form-control rounded-1 text-md customWidth'
                       id='telefono'
-                      required
                       placeholder='Ingrese su teléfono'
+                      onChange={event => setTelefono(event.target.value)}
                     />
                     <label htmlFor='telefono' className='form-label text-md'>
                       Teléfono
@@ -171,8 +252,9 @@ const CreateProfileUser = () => {
                       type='text'
                       className='form-control rounded-1 text-md'
                       id='localizacion'
-                      required
                       placeholder='Ingrese su localización'
+                      onChange={event => setLocalizacion(event.target.value)}
+                      value={localizacion}
                     />
                     <label
                       htmlFor='localizacion'
@@ -186,8 +268,9 @@ const CreateProfileUser = () => {
                       type='text'
                       className='form-control rounded-1 text-md'
                       id='idioma'
-                      required
                       placeholder='Ingrese su localización'
+                      onChange={event => setIdioma(event.target.value)}
+                      value={idioma}
                     />
                     <label htmlFor='idioma' className='form-label text-md'>
                       Segundo idioma
@@ -198,8 +281,9 @@ const CreateProfileUser = () => {
                       type='text'
                       className='form-control rounded-1 text-md customWidth'
                       id='nivelEducacion'
-                      required
                       placeholder='Ingrese su nivel de educación'
+                      onChange={event => setNivelEducacion(event.target.value)}
+                      value={nivelEducacion}
                     />
                     <label
                       htmlFor='nivelEducacion'
@@ -226,6 +310,8 @@ const CreateProfileUser = () => {
                       aria-label='Multiple select example'
                       style={{ height: '140px' }}
                       id='lenguajesProgramacion'
+                      onChange={handleLenguajesProgramacionChange}
+                      value={lenguajesProgramacion}
                     >
                       <option value='cPlusPlus'>C++</option>
                       <option value='cSharp'>C#</option>
@@ -262,6 +348,8 @@ const CreateProfileUser = () => {
                       aria-label='Multiple select example'
                       style={{ height: '140px' }}
                       id='habilidadesBlandas'
+                      onChange={handleHabilidadesBlandasChange}
+                      value={habilidadesBlandas}
                     >
                       <option value='adaptabilidad'>Adaptabilidad</option>
                       <option value='aprendizajeContinuo'>
@@ -310,9 +398,11 @@ const CreateProfileUser = () => {
                     <input
                       className='form-check-input'
                       type='checkbox'
-                      value=''
                       id='permisoTrabajo'
-                      required
+                      onChange={event =>
+                        setPermisoTrabajo(event.target.checked)
+                      }
+                      value={permisoTrabajo}
                     />
                     <label
                       className='form-check-label text-md'
@@ -323,7 +413,7 @@ const CreateProfileUser = () => {
                   </div>
                 </div>
                 <div className='col-lg-5 mb-2'>
-                  <div class='mb-3 d-flex align-items-center justify-content-center gap-3'>
+                  <div className='mb-3 d-flex align-items-center justify-content-center gap-3'>
                     <label
                       htmlFor='formFileSm'
                       className='form-label text-md m-0'
@@ -334,6 +424,7 @@ const CreateProfileUser = () => {
                       className='form-control form-control-sm rounded-1 text-sm'
                       id='formFileSm'
                       type='file'
+                      onChange={event => setCvFile(event.target.files[0])}
                     />
                   </div>
                 </div>
@@ -380,8 +471,11 @@ const CreateProfileUser = () => {
                             type='text'
                             className='form-control rounded-1 text-md'
                             id='nombreProyecto1'
-                            required
                             placeholder='Ingrese nombre del proyecto'
+                            value={nombreProyecto1}
+                            onChange={event =>
+                              setNombreProyecto1(event.target.value)
+                            }
                           />
                           <label
                             htmlFor='nombreProyecto1'
@@ -396,6 +490,10 @@ const CreateProfileUser = () => {
                             placeholder='Leave a comment here'
                             id='floatingTextarea1'
                             style={{ height: '100px' }}
+                            value={descripcionProyecto1}
+                            onChange={event =>
+                              setDescripcionProyecto1(event.target.value)
+                            }
                           ></textarea>
                           <label
                             htmlFor='floatingTextarea1'
@@ -409,11 +507,19 @@ const CreateProfileUser = () => {
                             type='text'
                             className='form-control rounded-1 text-sm mb-2'
                             placeholder='Repositorio del proyecto #1'
+                            value={repositorioProyecto1}
+                            onChange={event =>
+                              setRepositorioProyecto1(event.target.value)
+                            }
                           />
                           <input
                             type='text'
                             className='form-control rounded-1 text-sm'
                             placeholder='URL del proyecto #1 si esta publicado'
+                            value={urlProyecto1}
+                            onChange={event =>
+                              setUrlProyecto1(event.target.value)
+                            }
                           />
                         </div>
                       </div>
@@ -449,7 +555,6 @@ const CreateProfileUser = () => {
                             type='text'
                             className='form-control rounded-1 text-md'
                             id='nombreProyecto2'
-                            required
                             placeholder='Ingrese nombre del proyecto'
                           />
                           <label
@@ -518,7 +623,6 @@ const CreateProfileUser = () => {
                             type='text'
                             className='form-control rounded-1 text-md'
                             id='nombreProyecto3'
-                            required
                             placeholder='Ingrese nombre del proyecto'
                           />
                           <label
@@ -560,10 +664,7 @@ const CreateProfileUser = () => {
                 </div>
               </div>
               <div className='col-lg-10 pb-4 pb-lg-0 d-lg-none'>
-                <button
-                  className='btn btn-primary text-md rounded-1'
-                  type='submit'
-                >
+                <button className='btn btn-primary text-md rounded-1'>
                   Guardar cambios
                 </button>
               </div>
@@ -575,4 +676,4 @@ const CreateProfileUser = () => {
   )
 }
 
-export default CreateProfileUser
+export default CreateProfileUserPage
