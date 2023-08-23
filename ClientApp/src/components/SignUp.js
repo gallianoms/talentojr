@@ -7,8 +7,21 @@ const SignUp = () => {
     tipoUsuario: "",
   });
 
+  const [errors, setErrors] = useState({
+    usuario: "",
+    contraseña: "",
+    tipoUsuario: "",
+  });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+
+    if (name === "tipoUsuario") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        tipoUsuario: "",
+      }));
+    }
 
     setRegister((prevValues) => ({
       ...prevValues,
@@ -18,7 +31,22 @@ const SignUp = () => {
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    console.log("Text values:", register);
+
+    const newErrors = {
+      usuario:
+        register.usuario === "" ? "Campo usuario no puede estar vacio" : "",
+      contraseña:
+        register.contraseña === ""
+          ? "Campo contraseña no puede estar vacio"
+          : "",
+      tipoUsuario:
+        register.tipoUsuario === "" ? "Selecciona un tipo de usuario" : "",
+    };
+
+    setErrors(newErrors);
+    if (!newErrors.usuario && !newErrors.contraseña && !newErrors.tipoUsuario) {
+      console.log("Text values:", register);
+    }
   };
 
   return (
@@ -45,19 +73,29 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="usuario"
-                className="form-control mb-3 rounded-5"
+                className={`form-control rounded-5 ${
+                  errors.usuario ? "is-invalid" : ""
+                }`}
                 name="usuario"
                 value={register.usuario}
                 onChange={handleInputChange}
               />
+              {errors.usuario && (
+                <div className="invalid-feedback">{errors.usuario}</div>
+              )}
               <input
                 type="password"
                 placeholder="contraseña"
-                className="form-control rounded-5"
+                className={`form-control rounded-5 ${
+                  errors.contraseña ? "is-invalid" : ""
+                }`}
                 name="contraseña"
                 value={register.contraseña}
                 onChange={handleInputChange}
               />
+              {errors.contraseña && (
+                <div className="invalid-feedback">{errors.contraseña}</div>
+              )}
             </div>
           </div>
           {/* Remember me + Forgot password */}
@@ -94,6 +132,7 @@ const SignUp = () => {
                       checked={register.tipoUsuario === "empresa"}
                       onChange={handleInputChange}
                     />
+
                     <label
                       htmlFor="remember"
                       className="form-check-label fw-light text-sm"

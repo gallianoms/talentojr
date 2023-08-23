@@ -6,6 +6,11 @@ const Login = () => {
     contraseña: "",
   });
 
+  const [errors, setErrors] = useState({
+    email: "",
+    contraseña: "",
+  });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
@@ -17,7 +22,17 @@ const Login = () => {
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    console.log("Text values:", login);
+
+    const newErrors = {
+      email: login.email === "" ? "Campo email no puede estar vacio" : "",
+      contraseña:
+        login.contraseña === "" ? "Campo contraseña no puede estar vacio" : "",
+    };
+
+    setErrors(newErrors);
+    if (!newErrors.email && !newErrors.contraseña) {
+      console.log("Text values:", login);
+    }
   };
 
   return (
@@ -47,19 +62,29 @@ const Login = () => {
               <input
                 type="text"
                 placeholder="correo"
-                className="form-control mb-3 rounded-5"
+                className={`form-control rounded-5 ${
+                  errors.email ? "is-invalid" : ""
+                }`}
                 name="email"
                 value={login.email}
                 onChange={handleInputChange}
               />
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
               <input
-                type="text"
+                type="password"
                 placeholder="contraseña"
-                className="form-control rounded-5"
+                className={`form-control rounded-5 ${
+                  errors.contraseña ? "is-invalid" : ""
+                }`}
                 name="contraseña"
                 value={login.contraseña}
                 onChange={handleInputChange}
               />
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
             </div>
           </div>
           {/* Remember me + Forgot password */}

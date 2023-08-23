@@ -28,6 +28,11 @@ const CreateProfileCompany = () => {
     descCultura: "",
   });
 
+  const [errors, setErrors] = useState({
+    nombre: "",
+    website: "",
+  });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setCompany((prevValues) => ({
@@ -38,7 +43,17 @@ const CreateProfileCompany = () => {
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    console.log("Text values:", company);
+
+    const newErrors = {
+      nombre: company.nombre === "" ? "Campo nombre no puede estar vacio" : "",
+      website:
+        company.website === "" ? "Campo contraseña no puede estar vacio" : "",
+    };
+
+    setErrors(newErrors);
+    if (!newErrors.nombre && !newErrors.website) {
+      console.log("Text values:", company);
+    }
   };
 
   return (
@@ -77,7 +92,9 @@ const CreateProfileCompany = () => {
                   <div className="col-lg-4 col-12 form-floating mb-3 mb-lg-0">
                     <input
                       type="text"
-                      className="form-control rounded-1 text-md"
+                      className={`form-control rounded-1 text-md ${
+                        errors.nombre ? "is-invalid" : ""
+                      }`}
                       id="nombre"
                       name="nombre"
                       value={company.nombre}
@@ -85,6 +102,9 @@ const CreateProfileCompany = () => {
                       required=""
                       placeholder="Ingrese su nombre"
                     />
+                    {errors.nombre && (
+                      <div className="invalid-feedback">{errors.nombre}</div>
+                    )}
                     <label htmlFor="nombre" className="form-label text-md">
                       Nombre
                     </label>
@@ -92,7 +112,9 @@ const CreateProfileCompany = () => {
                   <div className="col-lg-4 col-12 form-floating mb-3 mb-lg-0">
                     <input
                       type="text"
-                      className="form-control rounded-1 text-md "
+                      className={`form-control rounded-1 text-md ${
+                        errors.website ? "is-invalid" : ""
+                      }`}
                       id="website"
                       name="website"
                       value={company.website}
@@ -100,6 +122,9 @@ const CreateProfileCompany = () => {
                       required=""
                       placeholder="Ingrese su sitio web"
                     />
+                    {errors.website && (
+                      <div className="invalid-feedback">{errors.website}</div>
+                    )}
                     <label htmlFor="website" className="form-label text-md">
                       Website
                     </label>

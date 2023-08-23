@@ -10,6 +10,14 @@ const CreateJob = () => {
     salaryRange: "",
   });
 
+  const [errors, setErrors] = useState({
+    titleJob: "",
+    description: "",
+    location: "",
+    modeOfWork: "",
+    salaryRange: "",
+  });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     sethandleJob((prevValues) => ({
@@ -20,7 +28,35 @@ const CreateJob = () => {
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    console.log("Text values:", job);
+
+    const newErrors = {
+      titleJob:
+        job.titleJob === ""
+          ? "Campo titulo de trabajo no puede estar vacio"
+          : "",
+      description:
+        job.description === ""
+          ? "Campo descripcion de trabajo no puede estar vacio"
+          : "",
+      modeOfWork:
+        job.modeOfWork === "" ? "Escoge opcion para modo de trabajo" : "",
+      salaryRange:
+        job.salaryRange === ""
+          ? "Campo rango salario no puede estar vacio"
+          : "",
+    };
+
+    setErrors(errors);
+
+    setErrors(newErrors);
+    if (
+      !newErrors.titleJob &&
+      !newErrors.description &&
+      !newErrors.modeOfWork &&
+      !newErrors.salaryRange
+    ) {
+      console.log("Text values:", job);
+    }
   };
 
   return (
@@ -32,17 +68,24 @@ const CreateJob = () => {
             <div className="mb-3">
               <input
                 type="text"
-                className="form-control bg-light"
+                className={`form-control rounded-5 ${
+                  errors.titleJob ? "is-invalid" : ""
+                }`}
                 id="title"
                 name="titleJob"
                 value={job.titleJob}
                 onChange={handleInputChange}
                 placeholder="Titulo de trabajo"
               />
+              {errors.titleJob && (
+                <div className="invalid-feedback">{errors.titleJob}</div>
+              )}
             </div>
             <div className="mb-3">
               <textarea
-                className="form-control bg-light"
+                className={`form-control rounded-5 ${
+                  errors.description ? "is-invalid" : ""
+                }`}
                 id="description"
                 rows="3"
                 value={job.description}
@@ -51,6 +94,9 @@ const CreateJob = () => {
                 required
                 placeholder="Descripción de trabajo"
               ></textarea>
+              {errors.description && (
+                <div className="invalid-feedback">{errors.description}</div>
+              )}
             </div>
             <div className="mb-3">
               <input
@@ -66,7 +112,9 @@ const CreateJob = () => {
             </div>
             <div className="mb-3">
               <select
-                className="form-select bg-light"
+                className={`form-control rounded-5 ${
+                  errors.modeOfWork ? "is-invalid" : ""
+                }`}
                 id="modeOfWork"
                 value={job.modeOfWork}
                 onChange={handleInputChange}
@@ -80,6 +128,9 @@ const CreateJob = () => {
                 <option value="Tiempo parcial">Tiempo parcial</option>
                 <option value="Remoto">Remoto</option>
               </select>
+              {errors.modeOfWork && (
+                <div className="invalid-feedback">{errors.modeOfWork}</div>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="skills" className="form-label">
@@ -87,7 +138,7 @@ const CreateJob = () => {
               </label>
               <input
                 type="text"
-                className="form-control bg-light"
+                className="form-control rounded-5"
                 id="skills"
                 name="skills"
                 value={job.skills}
@@ -99,7 +150,9 @@ const CreateJob = () => {
             <div className="mb-3">
               <input
                 type="text"
-                className="form-control bg-light"
+                className={`form-control rounded-5 ${
+                  errors.salaryRange ? "is-invalid" : ""
+                }`}
                 id="salaryRange"
                 value={job.salaryRange}
                 name="salaryRange"
@@ -107,6 +160,9 @@ const CreateJob = () => {
                 required
                 placeholder="Rango de salario"
               />
+              {errors.salaryRange && (
+                <div className="invalid-feedback">{errors.salaryRange}</div>
+              )}
             </div>
             <button
               type="submit"
