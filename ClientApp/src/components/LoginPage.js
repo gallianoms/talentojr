@@ -1,29 +1,19 @@
 import React, { useState } from "react";
-
-const SignUp = () => {
-  const [register, setRegister] = useState({
-    usuario: "",
+const LoginPage = () => {
+  const [login, setLogin] = useState({
+    email: "",
     contraseña: "",
-    tipoUsuario: "",
   });
 
   const [errors, setErrors] = useState({
-    usuario: "",
+    email: "",
     contraseña: "",
-    tipoUsuario: "",
   });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "tipoUsuario") {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        tipoUsuario: "",
-      }));
-    }
-
-    setRegister((prevValues) => ({
+    setLogin((prevValues) => ({
       ...prevValues,
       [name]: value,
     }));
@@ -33,19 +23,14 @@ const SignUp = () => {
     event.preventDefault();
 
     const newErrors = {
-      usuario:
-        register.usuario === "" ? "Campo usuario no puede estar vacio" : "",
+      email: login.email === "" ? "Campo email no puede estar vacio" : "",
       contraseña:
-        register.contraseña === ""
-          ? "Campo contraseña no puede estar vacio"
-          : "",
-      tipoUsuario:
-        register.tipoUsuario === "" ? "Selecciona un tipo de usuario" : "",
+        login.contraseña === "" ? "Campo contraseña no puede estar vacio" : "",
     };
 
     setErrors(newErrors);
-    if (!newErrors.usuario && !newErrors.contraseña && !newErrors.tipoUsuario) {
-      console.log("Text values:", register);
+    if (!newErrors.email && !newErrors.contraseña) {
+      console.log("Text values:", login);
     }
   };
 
@@ -53,44 +38,47 @@ const SignUp = () => {
     <div className="container mt-5">
       <div className="row mx-auto d-flex align-items-center justify-content-evenly">
         <div className="col-lg-4 d-none d-sm-block">
-          <img src="/img/rocket.png" alt="" width="420" height="420" />
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/016/757/184/original/3d-padlock-key-icon-with-password-insecure-isolated-security-data-protection-minimal-concept-3d-render-illustration-png.png"
+            alt=""
+            width="420"
+            height="420"
+          />
         </div>
         <div
-          className="col-lg-3 mt-4 rounded-5 px-lg-1 px-4"
+          className="col-lg-3 mt-4 rounded-1 px-lg-1 px-4"
           style={{ height: "470px", backgroundColor: "#f3f4f6" }}
         >
           {/* Input Email + Input Password */}
           <div className="row mt-4">
             <div className="col-lg-12">
               <h3 className="text-center">Bienvenido</h3>
-              <p className="text-center fw-light ">
-                Registrate si no tienes cuenta
-              </p>
+              <p className="text-center fw-light ">Por favor entre sus datos</p>
             </div>
           </div>
           <div className="row d-flex justify-content-center mt-2">
             <div className="col-lg-11">
               <input
                 type="text"
-                placeholder="usuario"
-                className={`form-control rounded-5 ${
-                  errors.usuario ? "is-invalid" : ""
+                placeholder="correo"
+                className={`form-control mb-3 rounded-1 ${
+                  errors.email ? "is-invalid" : ""
                 }`}
-                name="usuario"
-                value={register.usuario}
+                name="email"
+                value={login.email}
                 onChange={handleInputChange}
               />
-              {errors.usuario && (
-                <div className="invalid-feedback">{errors.usuario}</div>
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
               )}
               <input
-                type="password"
+                type="text"
                 placeholder="contraseña"
-                className={`form-control rounded-5 ${
+                className={`form-control rounded-1 ${
                   errors.contraseña ? "is-invalid" : ""
                 }`}
                 name="contraseña"
-                value={register.contraseña}
+                value={login.contraseña}
                 onChange={handleInputChange}
               />
               {errors.contraseña && (
@@ -101,45 +89,26 @@ const SignUp = () => {
           {/* Remember me + Forgot password */}
           <div className="row d-flex justify-content-center mt-3">
             <div className="col-lg-12">
-              <div className="row row-cols-auto d-flex justify-content-lg-center justify-content-between">
+              <div className="row row-cols-auto d-flex justify-content-lg-center justify-content-evenly">
                 <div className="col-lg-4 d-flex align-self-center">
                   <div className="form-check">
                     <input
-                      type="radio"
+                      type="checkbox"
                       className="form-check-input"
-                      id="buscasEmpleo"
-                      name="tipoUsuario"
-                      value="candidato"
-                      checked={register.tipoUsuario === "candidato"}
-                      onChange={handleInputChange}
+                      id="remember"
                     />
                     <label
                       htmlFor="remember"
                       className="form-check-label fw-light text-sm"
                     >
-                      Buscas empleo
+                      Recuerdame
                     </label>
                   </div>
                 </div>
-                <div className="col-lg-4 d-flex align-self-center">
-                  <div className="form-check">
-                    <input
-                      type="radio"
-                      className="form-check-input"
-                      id="deseaContratar"
-                      name="tipoUsuario"
-                      value="empresa"
-                      checked={register.tipoUsuario === "empresa"}
-                      onChange={handleInputChange}
-                    />
-
-                    <label
-                      htmlFor="remember"
-                      className="form-check-label fw-light text-sm"
-                    >
-                      Desea contratar
-                    </label>
-                  </div>
+                <div className="col-lg-7  d-flex align-self-center">
+                  <a href="/" className="text-primary text-sm">
+                    ¿Olvidaste tu contraseña?
+                  </a>
                 </div>
               </div>
             </div>
@@ -149,14 +118,14 @@ const SignUp = () => {
           <div className="row mt-5 d-flex justify-content-center">
             <div className="col-lg-11 d-grid gap-3 ">
               <button
-                className="btn btn-primary text-md rounded-5 shadow-lg py-2"
+                className="btn btn-primary text-md rounded-1 shadow-lg py-2"
                 type="button"
                 onClick={handleButtonClick}
               >
-                Registrate
+                Iniciar Sesión
               </button>
               <button
-                className="btn btn-secondary text-sm rounded-5 d-flex justify-content-center align-items-center py-2"
+                className="btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2"
                 type="button"
               >
                 <img
@@ -174,9 +143,12 @@ const SignUp = () => {
           {/* Sign Up */}
           <div className="row mt-4">
             <div className="col-lg-12 d-flex justify-content-center">
-              <span className="fw-light text-md">Ya tienes una cuenta?</span>
-              <a href="/login" className="ps-2 fw-bold text-primary text-md">
-                Login
+              <span className="fw-light text-md">¿No tienes una cuenta?</span>
+              <a
+                href="/registrarse"
+                className="ps-2 fw-bold text-primary text-md"
+              >
+                Regístrate
               </a>
             </div>
           </div>
@@ -186,4 +158,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default LoginPage;

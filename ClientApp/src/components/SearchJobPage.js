@@ -2,7 +2,7 @@ import React from 'react'
 import JobOfferCard from './JobOfferCard'
 import Filters from './Filters'
 
-const SearchJob = () => {
+const SearchJobPage = () => {
   return (
     <>
       <br />
@@ -18,4 +18,4 @@ const SearchJob = () => {
   )
 }
 
-export default SearchJob
+export default SearchJobPage

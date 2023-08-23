@@ -1,20 +1,29 @@
 import React, { useState } from "react";
 
-const Login = () => {
-  const [login, setLogin] = useState({
-    email: "",
+const SignUpPage = () => {
+  const [register, setRegister] = useState({
+    usuario: "",
     contraseña: "",
+    tipoUsuario: "",
   });
 
   const [errors, setErrors] = useState({
-    email: "",
+    usuario: "",
     contraseña: "",
+    tipoUsuario: "",
   });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    setLogin((prevValues) => ({
+    if (name === "tipoUsuario") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        tipoUsuario: "",
+      }));
+    }
+
+    setRegister((prevValues) => ({
       ...prevValues,
       [name]: value,
     }));
@@ -24,14 +33,19 @@ const Login = () => {
     event.preventDefault();
 
     const newErrors = {
-      email: login.email === "" ? "Campo email no puede estar vacio" : "",
+      usuario:
+        register.usuario === "" ? "Campo usuario no puede estar vacio" : "",
       contraseña:
-        login.contraseña === "" ? "Campo contraseña no puede estar vacio" : "",
+        register.contraseña === ""
+          ? "Campo contraseña no puede estar vacio"
+          : "",
+      tipoUsuario:
+        register.tipoUsuario === "" ? "Selecciona un tipo de usuario" : "",
     };
 
     setErrors(newErrors);
-    if (!newErrors.email && !newErrors.contraseña) {
-      console.log("Text values:", login);
+    if (!newErrors.usuario && !newErrors.contraseña && !newErrors.tipoUsuario) {
+      console.log("Text values:", register);
     }
   };
 
@@ -39,22 +53,19 @@ const Login = () => {
     <div className="container mt-5">
       <div className="row mx-auto d-flex align-items-center justify-content-evenly">
         <div className="col-lg-4 d-none d-sm-block">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/016/757/184/original/3d-padlock-key-icon-with-password-insecure-isolated-security-data-protection-minimal-concept-3d-render-illustration-png.png"
-            alt=""
-            width="420"
-            height="420"
-          />
+          <img src="/img/rocket.png" alt="" width="420" height="420" />
         </div>
         <div
-          className="col-lg-3 mt-4 rounded-5 px-lg-1 px-4"
+          className="col-lg-3 mt-4 rounded-1 px-lg-1 px-4"
           style={{ height: "470px", backgroundColor: "#f3f4f6" }}
         >
           {/* Input Email + Input Password */}
           <div className="row mt-4">
             <div className="col-lg-12">
               <h3 className="text-center">Bienvenido</h3>
-              <p className="text-center fw-light ">Por favor entre sus datos</p>
+              <p className="text-center fw-light ">
+                Registrate si no tienes cuenta
+              </p>
             </div>
           </div>
           <div className="row d-flex justify-content-center mt-2">
@@ -62,54 +73,66 @@ const Login = () => {
               <input
                 type="text"
                 placeholder="correo"
-                className={`form-control rounded-5 ${
-                  errors.email ? "is-invalid" : ""
+                className={`form-control mb-3 rounded-1 ${
+                  errors.usuario ? "is-invalid" : ""
                 }`}
-                name="email"
-                value={login.email}
+                name="usuario"
+                value={register.usuario}
                 onChange={handleInputChange}
               />
-              {errors.email && (
-                <div className="invalid-feedback">{errors.email}</div>
+              {errors.usuario && (
+                <div className="invalid-feedback">{errors.usuario}</div>
               )}
               <input
-                type="password"
+                type="text"
                 placeholder="contraseña"
-                className={`form-control rounded-5 ${
+                className={`form-control rounded-1 ${
                   errors.contraseña ? "is-invalid" : ""
                 }`}
                 name="contraseña"
-                value={login.contraseña}
+                value={register.contraseña}
                 onChange={handleInputChange}
               />
-              {errors.email && (
-                <div className="invalid-feedback">{errors.email}</div>
+              {errors.contraseña && (
+                <div className="invalid-feedback">{errors.contraseña}</div>
               )}
             </div>
           </div>
           {/* Remember me + Forgot password */}
           <div className="row d-flex justify-content-center mt-3">
             <div className="col-lg-12">
-              <div className="row row-cols-auto d-flex justify-content-lg-center justify-content-evenly">
+              <div className="row row-cols-auto d-flex justify-content-lg-center justify-content-between">
                 <div className="col-lg-4 d-flex align-self-center">
                   <div className="form-check">
                     <input
-                      type="checkbox"
+                      type="radio"
                       className="form-check-input"
                       id="remember"
+                      name="registro"
                     />
                     <label
                       htmlFor="remember"
                       className="form-check-label fw-light text-sm"
                     >
-                      Recuerdame
+                      Buscas empleo
                     </label>
                   </div>
                 </div>
-                <div className="col-lg-7  d-flex align-self-center">
-                  <a href="/recovery-pass" className="text-primary text-sm">
-                    ¿Olvidaste tu contraseña?
-                  </a>
+                <div className="col-lg-4 d-flex align-self-center">
+                  <div className="form-check">
+                    <input
+                      type="radio"
+                      className="form-check-input"
+                      id="remember"
+                      name="registro"
+                    />
+                    <label
+                      htmlFor="remember"
+                      className="form-check-label fw-light text-sm"
+                    >
+                      Desea contratar
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,14 +142,14 @@ const Login = () => {
           <div className="row mt-5 d-flex justify-content-center">
             <div className="col-lg-11 d-grid gap-3 ">
               <button
-                className="btn btn-primary text-md rounded-5 shadow-lg py-2"
+                className="btn btn-primary text-md rounded-1 shadow-lg py-2"
                 type="button"
                 onClick={handleButtonClick}
               >
-                Iniciar Sesión
+                Registrate
               </button>
               <button
-                className="btn btn-secondary text-sm rounded-5 d-flex justify-content-center align-items-center py-2"
+                className="btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2"
                 type="button"
               >
                 <img
@@ -144,9 +167,12 @@ const Login = () => {
           {/* Sign Up */}
           <div className="row mt-4">
             <div className="col-lg-12 d-flex justify-content-center">
-              <span className="fw-light text-md">¿No tienes una cuenta?</span>
-              <a href="/signup" className="ps-2 fw-bold text-primary text-md">
-                Regístrate
+              <span className="fw-light text-md">¿Ya tienes una cuenta?</span>
+              <a
+                href="/iniciar-sesion"
+                className="ps-2 fw-bold text-primary text-md"
+              >
+                Iniciar sesion
               </a>
             </div>
           </div>
@@ -156,4 +182,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUpPage;
