@@ -9,17 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = talentojr
 build_property.RootNamespace = talentojr
-build_property.ProjectDir = /Users/sgall/Projects/talentojr/
+build_property.ProjectDir = D:\Wintop Files\Proyecto-final\talentojr\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/sgall/Projects/talentojr
+build_property.MSBuildProjectDirectory = D:\Wintop Files\Proyecto-final\talentojr
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/sgall/Projects/talentojr/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+[D:/Wintop Files/Proyecto-final/talentojr/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sgall/Projects/talentojr/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[D:/Wintop Files/Proyecto-final/talentojr/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

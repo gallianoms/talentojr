@@ -1,87 +1,112 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 const LoginPage = () => {
   const [login, setLogin] = useState({
-    email: '',
-    contraseña: '',
-  })
+    email: "",
+    contraseña: "",
+  });
 
-  const handleInputChange = event => {
-    const { name, value } = event.target
+  const [errors, setErrors] = useState({
+    email: "",
+    contraseña: "",
+  });
 
-    setLogin(prevValues => ({
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setLogin((prevValues) => ({
       ...prevValues,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const handleButtonClick = event => {
-    event.preventDefault()
-    console.log('Text values:', login)
-  }
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+
+    const newErrors = {
+      email: login.email === "" ? "Campo email no puede estar vacio" : "",
+      contraseña:
+        login.contraseña === "" ? "Campo contraseña no puede estar vacio" : "",
+    };
+
+    setErrors(newErrors);
+    if (!newErrors.email && !newErrors.contraseña) {
+      console.log("Text values:", login);
+    }
+  };
 
   return (
-    <div className='container mt-5'>
-      <div className='row mx-auto d-flex align-items-center justify-content-evenly'>
-        <div className='col-lg-4 d-none d-sm-block'>
+    <div className="container mt-5">
+      <div className="row mx-auto d-flex align-items-center justify-content-evenly">
+        <div className="col-lg-4 d-none d-sm-block">
           <img
-            src='https://static.vecteezy.com/system/resources/previews/016/757/184/original/3d-padlock-key-icon-with-password-insecure-isolated-security-data-protection-minimal-concept-3d-render-illustration-png.png'
-            alt=''
-            width='420'
-            height='420'
+            src="https://static.vecteezy.com/system/resources/previews/016/757/184/original/3d-padlock-key-icon-with-password-insecure-isolated-security-data-protection-minimal-concept-3d-render-illustration-png.png"
+            alt=""
+            width="420"
+            height="420"
           />
         </div>
         <div
-          className='col-lg-3 mt-4 rounded-1 px-lg-1 px-4'
-          style={{ height: '470px', backgroundColor: '#f3f4f6' }}
+          className="col-lg-3 mt-4 rounded-1 px-lg-1 px-4"
+          style={{ height: "470px", backgroundColor: "#f3f4f6" }}
         >
           {/* Input Email + Input Password */}
-          <div className='row mt-4'>
-            <div className='col-lg-12'>
-              <h3 className='text-center'>Bienvenido</h3>
-              <p className='text-center fw-light '>Por favor entre sus datos</p>
+          <div className="row mt-4">
+            <div className="col-lg-12">
+              <h3 className="text-center">Bienvenido</h3>
+              <p className="text-center fw-light ">Por favor entre sus datos</p>
             </div>
           </div>
-          <div className='row d-flex justify-content-center mt-2'>
-            <div className='col-lg-11'>
+          <div className="row d-flex justify-content-center mt-2">
+            <div className="col-lg-11">
               <input
-                type='text'
-                placeholder='correo'
-                className='form-control mb-3 rounded-1'
-                name='email'
+                type="text"
+                placeholder="correo"
+                className={`form-control mb-3 rounded-1 ${
+                  errors.email ? "is-invalid" : ""
+                }`}
+                name="email"
                 value={login.email}
                 onChange={handleInputChange}
               />
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
               <input
-                type='text'
-                placeholder='contraseña'
-                className='form-control rounded-1'
-                name='contraseña'
+                type="text"
+                placeholder="contraseña"
+                className={`form-control rounded-1 ${
+                  errors.contraseña ? "is-invalid" : ""
+                }`}
+                name="contraseña"
                 value={login.contraseña}
                 onChange={handleInputChange}
               />
+              {errors.contraseña && (
+                <div className="invalid-feedback">{errors.contraseña}</div>
+              )}
             </div>
           </div>
           {/* Remember me + Forgot password */}
-          <div className='row d-flex justify-content-center mt-3'>
-            <div className='col-lg-12'>
-              <div className='row row-cols-auto d-flex justify-content-lg-center justify-content-evenly'>
-                <div className='col-lg-4 d-flex align-self-center'>
-                  <div className='form-check'>
+          <div className="row d-flex justify-content-center mt-3">
+            <div className="col-lg-12">
+              <div className="row row-cols-auto d-flex justify-content-lg-center justify-content-evenly">
+                <div className="col-lg-4 d-flex align-self-center">
+                  <div className="form-check">
                     <input
-                      type='checkbox'
-                      className='form-check-input'
-                      id='remember'
+                      type="checkbox"
+                      className="form-check-input"
+                      id="remember"
                     />
                     <label
-                      htmlFor='remember'
-                      className='form-check-label fw-light text-sm'
+                      htmlFor="remember"
+                      className="form-check-label fw-light text-sm"
                     >
                       Recuerdame
                     </label>
                   </div>
                 </div>
-                <div className='col-lg-7  d-flex align-self-center'>
-                  <a href='/' className='text-primary text-sm'>
+                <div className="col-lg-7  d-flex align-self-center">
+                  <a href="/" className="text-primary text-sm">
                     ¿Olvidaste tu contraseña?
                   </a>
                 </div>
@@ -90,38 +115,38 @@ const LoginPage = () => {
           </div>
 
           {/* Buttons */}
-          <div className='row mt-5 d-flex justify-content-center'>
-            <div className='col-lg-11 d-grid gap-3 '>
+          <div className="row mt-5 d-flex justify-content-center">
+            <div className="col-lg-11 d-grid gap-3 ">
               <button
-                className='btn btn-primary text-md rounded-1 shadow-lg py-2'
-                type='button'
+                className="btn btn-primary text-md rounded-1 shadow-lg py-2"
+                type="button"
                 onClick={handleButtonClick}
               >
                 Iniciar Sesión
               </button>
               <button
-                className='btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2'
-                type='button'
+                className="btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2"
+                type="button"
               >
                 <img
-                  src='https://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png'
-                  alt=''
-                  width='18'
-                  height='18'
-                  className=''
+                  src="https://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png"
+                  alt=""
+                  width="18"
+                  height="18"
+                  className=""
                 />
-                <span className='ms-2'> Iniciar Sesión con Google</span>
+                <span className="ms-2"> Iniciar Sesión con Google</span>
               </button>
             </div>
           </div>
 
           {/* Sign Up */}
-          <div className='row mt-4'>
-            <div className='col-lg-12 d-flex justify-content-center'>
-              <span className='fw-light text-md'>¿No tienes una cuenta?</span>
+          <div className="row mt-4">
+            <div className="col-lg-12 d-flex justify-content-center">
+              <span className="fw-light text-md">¿No tienes una cuenta?</span>
               <a
-                href='/registrarse'
-                className='ps-2 fw-bold text-primary text-md'
+                href="/registrarse"
+                className="ps-2 fw-bold text-primary text-md"
               >
                 Regístrate
               </a>
@@ -130,7 +155,7 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
