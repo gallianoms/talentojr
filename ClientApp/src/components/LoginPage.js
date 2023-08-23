@@ -31,7 +31,7 @@ const LoginPage = () => {
           />
         </div>
         <div
-          className='col-lg-3 mt-4 rounded-5 px-lg-1 px-4'
+          className='col-lg-3 mt-4 rounded-1 px-lg-1 px-4'
           style={{ height: '470px', backgroundColor: '#f3f4f6' }}
         >
           {/* Input Email + Input Password */}
@@ -46,7 +46,7 @@ const LoginPage = () => {
               <input
                 type='text'
                 placeholder='correo'
-                className='form-control mb-3 rounded-5'
+                className='form-control mb-3 rounded-1'
                 name='email'
                 value={login.email}
                 onChange={handleInputChange}
@@ -54,7 +54,7 @@ const LoginPage = () => {
               <input
                 type='text'
                 placeholder='contraseña'
-                className='form-control rounded-5'
+                className='form-control rounded-1'
                 name='contraseña'
                 value={login.contraseña}
                 onChange={handleInputChange}
@@ -81,7 +81,7 @@ const LoginPage = () => {
                   </div>
                 </div>
                 <div className='col-lg-7  d-flex align-self-center'>
-                  <a href='/recovery-pass' className='text-primary text-sm'>
+                  <a href='/' className='text-primary text-sm'>
                     ¿Olvidaste tu contraseña?
                   </a>
                 </div>
@@ -93,14 +93,14 @@ const LoginPage = () => {
           <div className='row mt-5 d-flex justify-content-center'>
             <div className='col-lg-11 d-grid gap-3 '>
               <button
-                className='btn btn-primary text-md rounded-5 shadow-lg py-2'
+                className='btn btn-primary text-md rounded-1 shadow-lg py-2'
                 type='button'
                 onClick={handleButtonClick}
               >
                 Iniciar Sesión
               </button>
               <button
-                className='btn btn-secondary text-sm rounded-5 d-flex justify-content-center align-items-center py-2'
+                className='btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2'
                 type='button'
               >
                 <img
@@ -119,7 +119,10 @@ const LoginPage = () => {
           <div className='row mt-4'>
             <div className='col-lg-12 d-flex justify-content-center'>
               <span className='fw-light text-md'>¿No tienes una cuenta?</span>
-              <a href='/signup' className='ps-2 fw-bold text-primary text-md'>
+              <a
+                href='/registrarse'
+                className='ps-2 fw-bold text-primary text-md'
+              >
                 Regístrate
               </a>
             </div>

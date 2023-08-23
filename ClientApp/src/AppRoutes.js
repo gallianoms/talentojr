@@ -5,9 +5,9 @@ import CreateProfileUserPage from './components/CreateProfileUserPage'
 import CreateProfileCompanyPage from './components/CreateProfileCompanyPage'
 import SearchJobPage from './components/SearchJobPage'
 import CandidateProfilePage from './components/CandidateProfilePage'
-import Candidates from './components/Candidates'
-import CreateJob from './components/CreateJob'
-import ListJob from './components/ListJob'
+import CandidatesPage from './components/CandidatesPage'
+import CreateJobPage from './components/CreateJobPage'
+import ListJobPage from './components/ListJobPage'
 
 const AppRoutes = [
   {
@@ -15,40 +15,49 @@ const AppRoutes = [
     element: <HomePage />,
   },
   {
-    path: '/login',
+    // C & E
+    path: '/iniciar-sesion',
     element: <LoginPage />,
   },
   {
-    path: '/signup',
+    // C & E
+    path: '/registrarse',
     element: <SignUpPage />,
   },
   {
-    path: '/create-profile-user',
+    // C
+    path: '/perfil-usuario',
     element: <CreateProfileUserPage />,
   },
   {
-    path: '/create-profile-company',
+    // E
+    path: '/perfil-empresa',
     element: <CreateProfileCompanyPage />,
   },
   {
-    path: '/search-job',
+    // C
+    path: '/buscar-empleo',
     element: <SearchJobPage />,
   },
   {
+    // E
     path: '/perfil-candidato',
     element: <CandidateProfilePage />,
   },
   {
-    path: '/create-job',
-    element: <CreateJob />,
+    // E
+    path: '/crear-empleo',
+    element: <CreateJobPage />,
   },
   {
-    path: '/list-job',
-    element: <ListJob />,
+    // E
+    path: '/lista-empleos',
+    element: <ListJobPage />,
   },
   {
-    path: '/candidatos',
-    element: <Candidates />,
+    // E
+    path: '/lista-candidatos',
+    element: <CandidatesPage />,
   },
 ]
 
