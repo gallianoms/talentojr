@@ -8,10 +8,39 @@ const CreateProfileCompanyPage = () => {
     const selectedFile = event.target.files[0]
 
     if (selectedFile) {
+      setCompany(prevValues => ({
+        ...prevValues,
+        image: selectedFile,
+      }))
+
       const imageUrl = URL.createObjectURL(selectedFile)
       setImageProfileSrc(imageUrl)
     }
   }
+
+  const [company, setCompany] = useState({
+    nombre: '',
+    website: '',
+    numEmpleados: '',
+    ceo: '',
+    descEmpresa: '',
+    descBeneficios: '',
+    descCultura: '',
+  })
+
+  const handleInputChange = event => {
+    const { name, value } = event.target
+    setCompany(prevValues => ({
+      ...prevValues,
+      [name]: value,
+    }))
+  }
+
+  const handleButtonClick = event => {
+    event.preventDefault()
+    console.log('Text values:', company)
+  }
+
   return (
     <div className='container'>
       <form className='my-3'>
@@ -50,6 +79,9 @@ const CreateProfileCompanyPage = () => {
                       type='text'
                       className='form-control rounded-1 text-md'
                       id='nombre'
+                      name='nombre'
+                      value={company.nombre}
+                      onChange={handleInputChange}
                       required=''
                       placeholder='Ingrese su nombre'
                     />
@@ -62,6 +94,9 @@ const CreateProfileCompanyPage = () => {
                       type='text'
                       className='form-control rounded-1 text-md '
                       id='website'
+                      name='website'
+                      value={company.website}
+                      onChange={handleInputChange}
                       required=''
                       placeholder='Ingrese su sitio web'
                     />
@@ -73,6 +108,9 @@ const CreateProfileCompanyPage = () => {
                     <input
                       type='number'
                       className='form-control rounded-1 text-md '
+                      name='numEmpleados'
+                      value={company.numEmpleados}
+                      onChange={handleInputChange}
                       id='size'
                       required=''
                       placeholder='Ingrese el tamaño de su empresa en empleados'
@@ -91,6 +129,9 @@ const CreateProfileCompanyPage = () => {
                       type='text'
                       className='form-control rounded-1 text-md'
                       id='ceo'
+                      name='ceo'
+                      value={company.ceo}
+                      onChange={handleInputChange}
                       required=''
                       placeholder='Ingrese su localización'
                     />
@@ -133,6 +174,9 @@ const CreateProfileCompanyPage = () => {
                       placeholder='Breve descripción de la empresa'
                       id='ceo'
                       style={{ height: 100 }}
+                      name='descEmpresa'
+                      value={company.descEmpresa}
+                      onChange={handleInputChange}
                     />
                     <label htmlFor='ceo' className='form-label text-md'>
                       Breve descripción de la empresa
@@ -149,7 +193,9 @@ const CreateProfileCompanyPage = () => {
                       placeholder='Breve descripción de la empresa'
                       id='benefits'
                       style={{ height: 100 }}
-                      defaultValue={''}
+                      name='descBeneficios'
+                      value={company.descBeneficios}
+                      onChange={handleInputChange}
                     />
                     <label htmlFor='benefits' className='form-label text-md'>
                       Breve descripción de los beneficios
@@ -161,7 +207,9 @@ const CreateProfileCompanyPage = () => {
                       placeholder='Breve descripción de la empresa'
                       id='ceo'
                       style={{ height: 100 }}
-                      defaultValue={''}
+                      name='descCultura'
+                      value={company.descCultura}
+                      onChange={handleInputChange}
                     />
                     <label htmlFor='ceo' className='form-label text-md'>
                       Breve descripción de la cultura
@@ -174,6 +222,7 @@ const CreateProfileCompanyPage = () => {
                 <button
                   className='btn btn-primary text-md rounded-1'
                   type='submit'
+                  onClick={handleButtonClick}
                 >
                   Guardar cambios
                 </button>

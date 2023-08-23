@@ -1,4 +1,3 @@
-import { FetchData } from './components/FetchData'
 import HomePage from './components/HomePage'
 import LoginPage from './components/LoginPage'
 import SignUpPage from './components/SignUpPage'
@@ -6,15 +5,14 @@ import CreateProfileUserPage from './components/CreateProfileUserPage'
 import CreateProfileCompanyPage from './components/CreateProfileCompanyPage'
 import SearchJobPage from './components/SearchJobPage'
 import CandidateProfilePage from './components/CandidateProfilePage'
+import Candidates from './components/Candidates'
+import CreateJob from './components/CreateJob'
+import ListJob from './components/ListJob'
 
 const AppRoutes = [
   {
     index: true,
     element: <HomePage />,
-  },
-  {
-    path: '/fetch-data',
-    element: <FetchData />,
   },
   {
     path: '/login',
@@ -39,6 +37,18 @@ const AppRoutes = [
   {
     path: '/perfil-candidato',
     element: <CandidateProfilePage />,
+  },
+  {
+    path: '/create-job',
+    element: <CreateJob />,
+  },
+  {
+    path: '/list-job',
+    element: <ListJob />,
+  },
+  {
+    path: '/candidatos',
+    element: <Candidates />,
   },
 ]
 

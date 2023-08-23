@@ -1,6 +1,24 @@
-import React from 'react'
-
+import React, { useState } from 'react'
 const LoginPage = () => {
+  const [login, setLogin] = useState({
+    email: '',
+    contraseña: '',
+  })
+
+  const handleInputChange = event => {
+    const { name, value } = event.target
+
+    setLogin(prevValues => ({
+      ...prevValues,
+      [name]: value,
+    }))
+  }
+
+  const handleButtonClick = event => {
+    event.preventDefault()
+    console.log('Text values:', login)
+  }
+
   return (
     <div className='container mt-5'>
       <div className='row mx-auto d-flex align-items-center justify-content-evenly'>
@@ -29,11 +47,17 @@ const LoginPage = () => {
                 type='text'
                 placeholder='correo'
                 className='form-control mb-3 rounded-5'
+                name='email'
+                value={login.email}
+                onChange={handleInputChange}
               />
               <input
                 type='text'
                 placeholder='contraseña'
                 className='form-control rounded-5'
+                name='contraseña'
+                value={login.contraseña}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -71,6 +95,7 @@ const LoginPage = () => {
               <button
                 className='btn btn-primary text-md rounded-5 shadow-lg py-2'
                 type='button'
+                onClick={handleButtonClick}
               >
                 Iniciar Sesión
               </button>
