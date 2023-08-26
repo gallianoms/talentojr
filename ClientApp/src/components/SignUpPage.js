@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const SignUpPage = () => {
   const [register, setRegister] = useState({
-    usuario: "",
-    contraseña: "",
-    tipoUsuario: "",
+    email: "",
+    password: "",
+    role: "",
   });
 
   const [errors, setErrors] = useState({
@@ -12,6 +12,8 @@ const SignUpPage = () => {
     contraseña: "",
     tipoUsuario: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,34 +23,63 @@ const SignUpPage = () => {
         ...prevErrors,
         tipoUsuario: "",
       }));
+    } else if (name === "registro") {
+      // Handle radio button change
+      setRegister((prevValues) => ({
+        ...prevValues,
+        role: value,
+      }));
+    } else {
+      setRegister((prevValues) => ({
+        ...prevValues,
+        [name]: value,
+      }));
     }
-
-    setRegister((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
   };
 
   const handleButtonClick = (event) => {
     event.preventDefault();
+    const apiUrl = "https://64e8bf1099cf45b15fe0132e.mockapi.io/register";
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        const existingUser = data.find((user) => user.email === register.email);
+        if (existingUser) {
+          setErrorMessage("Este usuario ya existe");
+        } else {
+          fetch(apiUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(register),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              setRegister({
+                email: "",
+                password: "",
+                role: "",
+              });
+              setErrorMessage("");
+              localStorage.setItem("user", JSON.stringify(data));
+              window.location.href = "/";
+            });
+        }
+      });
 
     const newErrors = {
       usuario:
-        register.usuario === "" ? "Campo usuario no puede estar vacio" : "",
+        register.email === "" ? "Campo usuario no puede estar vacio" : "",
       contraseña:
-        register.contraseña === ""
-          ? "Campo contraseña no puede estar vacio"
-          : "",
-      tipoUsuario:
-        register.tipoUsuario === "" ? "Selecciona un tipo de usuario" : "",
+        register.password === "" ? "Campo contraseña no puede estar vacio" : "",
+      tipoUsuario: register.role === "" ? "Selecciona un tipo de usuario" : "",
     };
 
     setErrors(newErrors);
     if (!newErrors.usuario && !newErrors.contraseña && !newErrors.tipoUsuario) {
-      console.log("Text values:", register);
     }
   };
-
   return (
     <div className="container mt-5">
       <div className="row mx-auto d-flex align-items-center justify-content-evenly">
@@ -76,21 +107,21 @@ const SignUpPage = () => {
                 className={`form-control mb-3 rounded-1 ${
                   errors.usuario ? "is-invalid" : ""
                 }`}
-                name="usuario"
-                value={register.usuario}
+                name="email"
+                value={register.email}
                 onChange={handleInputChange}
               />
               {errors.usuario && (
                 <div className="invalid-feedback">{errors.usuario}</div>
               )}
               <input
-                type="text"
+                type="password"
                 placeholder="contraseña"
                 className={`form-control rounded-1 ${
                   errors.contraseña ? "is-invalid" : ""
                 }`}
-                name="contraseña"
-                value={register.contraseña}
+                name="password"
+                value={register.password}
                 onChange={handleInputChange}
               />
               {errors.contraseña && (
@@ -109,6 +140,9 @@ const SignUpPage = () => {
                       className="form-check-input"
                       id="remember"
                       name="registro"
+                      value="candidato"
+                      checked={register.role === "candidato"}
+                      onChange={handleInputChange}
                     />
                     <label
                       htmlFor="remember"
@@ -125,6 +159,9 @@ const SignUpPage = () => {
                       className="form-check-input"
                       id="remember"
                       name="registro"
+                      value="empresa"
+                      checked={register.role === "empresa"}
+                      onChange={handleInputChange}
                     />
                     <label
                       htmlFor="remember"
@@ -148,6 +185,8 @@ const SignUpPage = () => {
               >
                 Registrate
               </button>
+              {errorMessage && <p className="text-danger">{errorMessage}</p>}
+
               <button
                 className="btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2"
                 type="button"
