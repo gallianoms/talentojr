@@ -2,12 +2,14 @@ import React, { useState } from "react";
 const LoginPage = () => {
   const [login, setLogin] = useState({
     email: "",
-    contraseña: "",
+    password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [errors, setErrors] = useState({
     email: "",
-    contraseña: "",
+    password: "",
   });
 
   const handleInputChange = (event) => {
@@ -22,14 +24,33 @@ const LoginPage = () => {
   const handleButtonClick = (event) => {
     event.preventDefault();
 
+    const url = "https://64e8bf1099cf45b15fe0132e.mockapi.io/register";
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const existingUser = data.find(
+          (user) =>
+            user.email === login.email && user.password === login.password
+        );
+        if (existingUser) {
+          setErrorMessage("");
+          localStorage.setItem("user", JSON.stringify(existingUser));
+          window.location.href = "/";
+        } else {
+          setErrorMessage("Email o contraseña incorrectos");
+        }
+      });
+
     const newErrors = {
       email: login.email === "" ? "Campo email no puede estar vacio" : "",
-      contraseña:
-        login.contraseña === "" ? "Campo contraseña no puede estar vacio" : "",
+      password:
+        login.password === "" ? "Campo password no puede estar vacio" : "",
     };
 
     setErrors(newErrors);
-    if (!newErrors.email && !newErrors.contraseña) {
+    if (!newErrors.email && !newErrors.password) {
       console.log("Text values:", login);
     }
   };
@@ -72,17 +93,17 @@ const LoginPage = () => {
                 <div className="invalid-feedback">{errors.email}</div>
               )}
               <input
-                type="text"
+                type="password"
                 placeholder="contraseña"
                 className={`form-control rounded-1 ${
-                  errors.contraseña ? "is-invalid" : ""
+                  errors.password ? "is-invalid" : ""
                 }`}
-                name="contraseña"
-                value={login.contraseña}
+                name="password"
+                value={login.password}
                 onChange={handleInputChange}
               />
-              {errors.contraseña && (
-                <div className="invalid-feedback">{errors.contraseña}</div>
+              {errors.password && (
+                <div className="invalid-feedback">{errors.password}</div>
               )}
             </div>
           </div>
@@ -124,6 +145,7 @@ const LoginPage = () => {
               >
                 Iniciar Sesión
               </button>
+              {errorMessage && <p className="text-danger">{errorMessage}</p>}
               <button
                 className="btn btn-secondary text-sm rounded-1 d-flex justify-content-center align-items-center py-2"
                 type="button"
