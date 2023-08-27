@@ -16,47 +16,47 @@ const AppRoutes = [
   },
   {
     // C & E
-    path: '/iniciar-sesion',
+    path: '/iniciar-sesion', //! DONE
     element: <LoginPage />,
   },
   {
     // C & E
-    path: '/registrarse',
+    path: '/registrarse', //! DONE
     element: <SignUpPage />,
   },
   {
     // C
-    path: '/perfil-usuario',
+    path: '/perfil-usuario', // TODO: Salva
     element: <CreateProfileUserPage />,
   },
   {
     // E
-    path: '/perfil-empresa',
+    path: '/perfil-empresa', //? TODO: Wintop
     element: <CreateProfileCompanyPage />,
   },
   {
     // C
-    path: '/buscar-empleo',
+    path: '/buscar-empleo', // TODO filters: Salva
     element: <SearchJobPage />,
   },
   {
     // E
-    path: '/perfil-candidato',
+    path: '/perfil-candidato', // TODO: Salva
     element: <CandidateProfilePage />,
   },
   {
     // E
-    path: '/crear-empleo',
+    path: '/crear-empleo', //! DONE
     element: <CreateJobPage />,
   },
   {
     // E
-    path: '/lista-empleos',
+    path: '/lista-empleos', //? TODO: Wintop
     element: <ListJobPage />,
   },
   {
     // E
-    path: '/lista-candidatos',
+    path: '/lista-candidatos', //? TODO: Wintop
     element: <CandidatesPage />,
   },
 ]

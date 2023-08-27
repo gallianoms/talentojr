@@ -5,24 +5,45 @@ import {
   HiOutlineAcademicCap,
 } from 'react-icons/hi'
 
-const JobOfferCard = () => {
+const JobOfferCard = ({ offer }) => {
+  const {
+    id,
+    title,
+    description,
+    experience,
+    location,
+    mode,
+    salary,
+    technologies,
+    createdAt,
+  } = offer
+
+  console.log(
+    id,
+    title,
+    description,
+    experience,
+    location,
+    mode,
+    salary,
+    technologies,
+    createdAt
+  )
+
+  // TODO: Resolve button to send offer
+
   return (
     <div className='card mb-3 rounded-1 shadow-sm' style={{ maxWidth: 540 }}>
       <div className='row g-0'>
         <div className='col-md-12'>
           <div className='card-body'>
             <div className='d-flex justify-content-between'>
-              <h5 className='card-title'>Desarrollador C# </h5>
+              <h5 className='card-title'>{title}</h5>
               <h6 className='card-subtitle mb-2 text-muted d-flex align-self-center '>
                 Remoto
               </h6>
             </div>
-            <p className='card-text text-md mb-4'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Praesentium atque totam, reprehenderit dolore perferendis optio
-              sapiente quisquam quae quaerat! Rerum incidunt commodi uisquam
-              quae quaerat! Rerum...
-            </p>
+            <p className='card-text text-md mb-4'>{description}</p>
             <div className='row mb-4'>
               <div className='col-lg-4 '>
                 <div className='d-flex mb-1'>
@@ -30,7 +51,7 @@ const JobOfferCard = () => {
                     className='d-flex align-self-center'
                     style={{ fontSize: '20px' }}
                   />
-                  <span className='mx-2 text-md'>Junior</span>
+                  <span className='mx-2 text-md'>{experience}</span>
                 </div>
                 <div className='d-flex mb-1'>
                   <HiOutlineCurrencyEuro
@@ -49,30 +70,11 @@ const JobOfferCard = () => {
               </div>
               <div className='col-lg-8 d-flex align-items-center '>
                 <div className='d-flex flex-wrap gap-2 justify-content-end'>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    HTML
-                  </span>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    CSS
-                  </span>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    JavaScript
-                  </span>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    Python
-                  </span>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    Java
-                  </span>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    SQL
-                  </span>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    React
-                  </span>
-                  <span className='badge rounded-pill text-bg-light p-2'>
-                    Node.js
-                  </span>
+                  {technologies.map(technology => (
+                    <span className='badge rounded-pill text-bg-light p-2'>
+                      {technology}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

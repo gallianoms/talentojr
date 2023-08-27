@@ -12,7 +12,7 @@ import './NavMenu.css'
 
 export const NavMenu = () => {
   const [collapsed, setCollapsed] = useState(true)
-  const [isCandidate, setIsCandidate] = useState(false)
+  const [isCandidate, setIsCandidate] = useState(true)
 
   const toggleNavbar = () => {
     setCollapsed(!collapsed)

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Ai9R83dsBFsqJryKvm2mrdYbw6Jcxs8lhqmE1IIcRRdCa8uCDLyb/qG6zIWr0ALrx5oNC8EghTcBS9CF9L/k3g==",
+  "dgSpecHash": "H9upii/pzbTaE0K753Hs4piWdBJFoIuOiISkPw86DygEo4wcEjqi6r8CLpzB5AB8ndFBfXyhYyByOh75uDP+eg==",
   "success": true,
-  "projectFilePath": "D:\\Wintop Files\\Proyecto-final\\talentojr\\talentojr.csproj",
+  "projectFilePath": "/Users/sgall/Library/Mobile Documents/com~apple~CloudDocs/talentojr/talentojr.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\adedo\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\7.0.9\\microsoft.aspnetcore.spaproxy.7.0.9.nupkg.sha512"
+    "/Users/sgall/.nuget/packages/microsoft.aspnetcore.spaproxy/7.0.9/microsoft.aspnetcore.spaproxy.7.0.9.nupkg.sha512"
   ],
   "logs": []
 }
