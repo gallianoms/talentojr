@@ -1,64 +1,64 @@
-import HomePage from './components/HomePage'
-import LoginPage from './components/LoginPage'
-import SignUpPage from './components/SignUpPage'
-import CreateProfileUserPage from './components/CreateProfileUserPage'
-import CreateProfileCompanyPage from './components/CreateProfileCompanyPage'
-import SearchJobPage from './components/SearchJobPage'
-import CandidateProfilePage from './components/CandidateProfilePage'
-import CandidatesPage from './components/CandidatesPage'
-import CreateJobPage from './components/CreateJobPage'
-import ListJobPage from './components/ListJobPage'
+import HomePage from "./components/HomePage";
+import LoginPage from "./components/LoginPage";
+import SignUpPage from "./components/SignUpPage";
+import CreateProfileUserPage from "./components/CreateProfileUserPage";
+import CreateProfileCompanyPage from "./components/CreateProfileCompanyPage";
+import SearchJobPage from "./components/SearchJobPage";
+import CandidateProfilePage from "./components/CandidateProfilePage";
+import CandidatesPage from "./components/CandidatesPage";
+import CreateJobPage from "./components/CreateJobPage";
+import ListJobPage from "./components/ListJobPage";
 
 const AppRoutes = [
   {
-    index: true,
+    path: "/",
     element: <HomePage />,
   },
   {
     // C & E
-    path: '/iniciar-sesion', //! DONE
+    path: "/iniciar-sesion",
     element: <LoginPage />,
   },
   {
     // C & E
-    path: '/registrarse', //! DONE
+    path: "/registrarse",
     element: <SignUpPage />,
   },
   {
     // C
-    path: '/perfil-usuario', // TODO: Salva
+    path: "/perfil-usuario",
     element: <CreateProfileUserPage />,
   },
   {
     // E
-    path: '/perfil-empresa', //? TODO: Wintop
+    path: "/perfil-empresa",
     element: <CreateProfileCompanyPage />,
   },
   {
     // C
-    path: '/buscar-empleo', // TODO filters: Salva
+    path: "/buscar-empleo",
     element: <SearchJobPage />,
   },
   {
     // E
-    path: '/perfil-candidato', // TODO: Salva
+    path: "/perfil-candidato",
     element: <CandidateProfilePage />,
   },
   {
     // E
-    path: '/crear-empleo', //! DONE
+    path: "/crear-empleo",
     element: <CreateJobPage />,
   },
   {
     // E
-    path: '/lista-empleos', //? TODO: Wintop
+    path: "/lista-empleos",
     element: <ListJobPage />,
   },
   {
     // E
-    path: '/lista-candidatos', //? TODO: Wintop
+    path: "/lista-candidatos",
     element: <CandidatesPage />,
   },
-]
+];
 
-export default AppRoutes
+export default AppRoutes;
