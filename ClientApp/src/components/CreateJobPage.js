@@ -1,71 +1,72 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const CreateJob = () => {
   const [job, setJob] = useState({
-    title: '',
-    description: '',
-    location: '',
-    mode: '',
+    title: "",
+    description: "",
+    location: "",
+    mode: "",
     technologies: [],
-    salary: '',
-  })
+    salary: "",
+  });
 
+  const companyId = JSON.parse(localStorage.getItem("user"));
   const [errors, setErrors] = useState({
-    title: '',
-    description: '',
-    location: '',
-    mode: '',
-    salary: '',
-  })
+    title: "",
+    description: "",
+    location: "",
+    mode: "",
+    salary: "",
+  });
 
-  const handleInputChange = event => {
-    const { name, value } = event.target
-    setJob(prevValues => ({
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setJob((prevValues) => ({
       ...prevValues,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const handleSubmit = async event => {
-    event.preventDefault()
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     const newJob = {
       title: job.title,
       description: job.description,
       location: job.location,
       mode: job.mode,
-      technologies: job.technologies.split(',').map(tech => tech.trim()), // Convert technologies to array
+      technologies: job.technologies.split(",").map((tech) => tech.trim()), // Convert technologies to array
       salary: job.salary,
-    }
+    };
 
     try {
       const response = await fetch(
-        'https://64e8aae299cf45b15fdff78c.mockapi.io/ofertas',
+        "https://64e8aae299cf45b15fdff78c.mockapi.io/ofertas",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(newJob),
         }
-      )
+      );
 
       if (response.ok) {
-        console.log('Job offer created successfully:', newJob)
+        console.log("Job offer created successfully:", newJob);
         // Reset the form after successful submission
         setJob({
-          title: '',
-          description: '',
-          location: '',
-          mode: '',
-          technologies: '',
-          salary: '',
-        })
+          title: "",
+          description: "",
+          location: "",
+          mode: "",
+          technologies: "",
+          salary: "",
+        });
       } else {
-        console.error('Failed to create job offer')
+        console.error("Failed to create job offer");
       }
     } catch (error) {
-      console.error('Error creating job offer:', error)
+      console.error("Error creating job offer:", error);
     }
 
     // const newErrors = {
@@ -89,124 +90,124 @@ const CreateJob = () => {
     // ) {
     //   console.log('Text values:', job)
     // }
-  }
+  };
 
   return (
-    <div className='container-fluid mb-5'>
-      <div className='row justify-content-center align-items-center'>
-        <div className='col-lg-6 col-md-6 col-sm-8'>
+    <div className="container-fluid mb-5">
+      <div className="row justify-content-center align-items-center">
+        <div className="col-lg-6 col-md-6 col-sm-8">
           <form
-            className='p-4 shadow rounded'
+            className="p-4 shadow rounded"
             onSubmit={handleSubmit}
-            type='submit'
+            type="submit"
           >
-            <h2 className='mb-4'>Publica un puesto de trabajo</h2>
-            <div className='mb-3'>
+            <h2 className="mb-4">Publica un puesto de trabajo</h2>
+            <div className="mb-3">
               <input
-                type='text'
+                type="text"
                 className={`form-control rounded-1 ${
-                  errors.title ? 'is-invalid' : ''
+                  errors.title ? "is-invalid" : ""
                 }`}
-                id='title'
-                name='title'
+                id="title"
+                name="title"
                 value={job.title}
                 onChange={handleInputChange}
-                placeholder='Titulo de trabajo'
+                placeholder="Titulo de trabajo"
                 required
               />
               {errors.title && (
-                <div className='invalid-feedback'>{errors.title}</div>
+                <div className="invalid-feedback">{errors.title}</div>
               )}
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <textarea
                 className={`form-control rounded-1 ${
-                  errors.description ? 'is-invalid' : ''
+                  errors.description ? "is-invalid" : ""
                 }`}
-                id='description'
-                rows='3'
+                id="description"
+                rows="3"
                 value={job.description}
                 onChange={handleInputChange}
-                name='description'
+                name="description"
                 required
-                placeholder='Descripción de trabajo'
+                placeholder="Descripción de trabajo"
               ></textarea>
               {errors.description && (
-                <div className='invalid-feedback'>{errors.description}</div>
+                <div className="invalid-feedback">{errors.description}</div>
               )}
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <input
-                type='text'
-                className='form-control '
-                id='location'
-                name='location'
+                type="text"
+                className="form-control "
+                id="location"
+                name="location"
                 value={job.location}
                 onChange={handleInputChange}
                 required
-                placeholder='Ubicación de trabajo'
+                placeholder="Ubicación de trabajo"
               />
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <select
                 className={`form-control rounded-1 ${
-                  errors.mode ? 'is-invalid' : ''
+                  errors.mode ? "is-invalid" : ""
                 }`}
-                id='mode'
+                id="mode"
                 value={job.mode}
                 onChange={handleInputChange}
-                name='mode'
+                name="mode"
                 required
               >
-                <option value='' disabled defaultValue>
+                <option value="" disabled defaultValue>
                   Modalidad de trabajo
                 </option>
-                <option value='Tiempo completo'>Tiempo completo</option>
-                <option value='Tiempo parcial'>Tiempo parcial</option>
-                <option value='Remoto'>Remoto</option>
+                <option value="Tiempo completo">Tiempo completo</option>
+                <option value="Tiempo parcial">Tiempo parcial</option>
+                <option value="Remoto">Remoto</option>
               </select>
               {errors.mode && (
-                <div className='invalid-feedback'>{errors.mode}</div>
+                <div className="invalid-feedback">{errors.mode}</div>
               )}
             </div>
-            <div className='mb-3'>
-              <label htmlFor='technologies' className='form-label'>
+            <div className="mb-3">
+              <label htmlFor="technologies" className="form-label">
                 Tecnologias <em>(Separa las tecnologias por una coma)</em>
               </label>
               <input
-                type='text'
-                className='form-control rounded-1'
-                id='technologies'
-                name='technologies'
+                type="text"
+                className="form-control rounded-1"
+                id="technologies"
+                name="technologies"
                 value={job.technologies}
                 onChange={handleInputChange}
                 required
-                placeholder='Tecnologias'
+                placeholder="Tecnologias"
               />
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <input
-                type='text'
+                type="text"
                 className={`form-control rounded-1 ${
-                  errors.salary ? 'is-invalid' : ''
+                  errors.salary ? "is-invalid" : ""
                 }`}
-                id='salary'
+                id="salary"
                 value={job.salary}
-                name='salary'
+                name="salary"
                 onChange={handleInputChange}
                 required
-                placeholder='Rango de salario'
+                placeholder="Rango de salario"
               />
               {errors.salary && (
-                <div className='invalid-feedback'>{errors.salary}</div>
+                <div className="invalid-feedback">{errors.salary}</div>
               )}
             </div>
-            <button className='btn btn-primary'>Crear</button>
+            <button className="btn btn-primary">Crear</button>
           </form>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CreateJob
+export default CreateJob;

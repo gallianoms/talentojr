@@ -1,7 +1,23 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { BsBoxArrowRight } from "react-icons/bs";
 
-const Candidates = () => {
+const CandidatesPage = () => {
+  const [candidatesData, setCandidatesData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://64e8aae299cf45b15fdff78c.mockapi.io/candidates")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setCandidatesData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <section className="intro">
       <div className="bg-image mt-5">
@@ -16,67 +32,29 @@ const Candidates = () => {
                       <table className="table table-striped mb-0">
                         <thead>
                           <tr>
-                            <th scope="col">Nombre y apellidos</th>
-                            <th scope="col">Oferta Inscrita</th>
-                            <th scope="col">Estado</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Localización</th>
+                            <th scope="col">Github</th>
+                            <th scope="col">Linkedin</th>
                             <th scope="col">Ver perfil</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Like a butterfly</td>
-                            <td>Boxing</td>
-                            <td>
-                              <form>
-                                <select className="form-select">
-                                  <option>Morning</option>
-                                  <option>Afternoon</option>
-                                  <option>Evening</option>
-                                </select>
-                              </form>
-                            </td>
-                            <td>
-                              <a href="hola">
-                                <BsBoxArrowRight />
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Mind &amp; Body</td>
-                            <td>Yoga</td>
-                            <td>
-                              <form>
-                                <select className="form-select">
-                                  <option>Morning</option>
-                                  <option>Afternoon</option>
-                                  <option>Evening</option>
-                                </select>
-                              </form>
-                            </td>
-                            <td>
-                              <a href="hola">
-                                <BsBoxArrowRight />
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Crit Cardio</td>
-                            <td>Gym</td>
-                            <td>
-                              <form>
-                                <select className="form-select">
-                                  <option>Morning</option>
-                                  <option>Afternoon</option>
-                                  <option>Evening</option>
-                                </select>
-                              </form>
-                            </td>
-                            <td>
-                              <a href="hola">
-                                <BsBoxArrowRight />
-                              </a>
-                            </td>
-                          </tr>
+                          {candidatesData.map((candidate, index) => (
+                            <tr key={index}>
+                              <td>{candidate.name}</td>
+                              <td>{candidate.lastname}</td>
+                              <td>{candidate.location}</td>
+                              <td>{candidate.github}</td>
+                              <td>{candidate.linkedin}</td>
+                              <td>
+                                <a href="hola">
+                                  <BsBoxArrowRight />
+                                </a>
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
@@ -91,4 +69,4 @@ const Candidates = () => {
   );
 };
 
-export default Candidates;
+export default CandidatesPage;
