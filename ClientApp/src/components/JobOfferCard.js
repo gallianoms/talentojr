@@ -7,6 +7,7 @@ import {
 
 const JobOfferCard = ({ offer }) => {
   const {
+    id,
     title,
     description,
     experience,
@@ -16,6 +17,9 @@ const JobOfferCard = ({ offer }) => {
     technologies,
     createdAt,
   } = offer;
+
+  // TODO: Resolve button to send offer
+
   return (
     <div className="card mb-3 rounded-1 shadow-sm" style={{ maxWidth: 540 }}>
       <div className="row g-0">
@@ -54,9 +58,9 @@ const JobOfferCard = ({ offer }) => {
               </div>
               <div className="col-lg-8 d-flex align-items-center ">
                 <div className="d-flex flex-wrap gap-2 justify-content-end">
-                  {technologies.map((tech, index) => (
+                  {technologies.map((technology) => (
                     <span className="badge rounded-pill text-bg-light p-2">
-                      {tech}
+                      {technology}
                     </span>
                   ))}
                 </div>

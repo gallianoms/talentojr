@@ -1,98 +1,144 @@
 import React, { useState } from 'react'
+import { storage } from '../firebaseConfig'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
 const CreateProfileUserPage = () => {
-  const [imageProfileSrc, setImageProfileSrc] = useState(
-    'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-4.png'
-  )
+  const [profileData, setProfileData] = useState({
+    photo:
+      'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-4.png',
+    imageWebsiteOne:
+      'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210401151214/What-is-Website.png',
+    github: '',
+    linkedin: '',
+    website: '',
+    name: '',
+    lastname: '',
+    phone: '',
+    location: '',
+    secondLanguage: '',
+    education: '',
+    technologies: [],
+    softSkills: [],
+    permissionWork: false,
+    cv: null,
+    titleWebsiteOne: '',
+    descriptionWebsiteOne: '',
+    repositoryWebsiteOne: '',
+    urlWebsiteOne: '',
+  })
 
-  const handleImageProfileChange = event => {
-    const selectedFile = event.target.files[0]
-
-    if (selectedFile) {
-      const imageUrl = URL.createObjectURL(selectedFile)
-      setImageProfileSrc(imageUrl)
-    }
+  const handleInputChange = event => {
+    const { name, value } = event.target
+    setProfileData(prevProfileData => ({
+      ...prevProfileData,
+      [name]: value,
+    }))
   }
 
-  const [imageProjectOneSrc, setImageProjectOneSrc] = useState(
-    'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210401151214/What-is-Website.png'
-  )
-
-  const handleImageProjectOneChange = event => {
-    const selectedFile = event.target.files[0]
-
-    if (selectedFile) {
-      const imageUrl = URL.createObjectURL(selectedFile)
-      setImageProjectOneSrc(imageUrl)
-    }
+  const handleCheckboxChange = event => {
+    const { name, checked } = event.target
+    setProfileData(prevProfileData => ({
+      ...prevProfileData,
+      [name]: checked,
+    }))
   }
 
-  const handleLenguajesProgramacionChange = event => {
-    const selectedOptions = event.target.selectedOptions
+  const handleArrayChange = (name, selectedOptions) => {
     const selectedValues = Array.from(selectedOptions).map(
       option => option.value
     )
-    setLenguajesProgramacion(selectedValues)
+    setProfileData(prevProfileData => ({
+      ...prevProfileData,
+      [name]: selectedValues,
+    }))
   }
 
-  const handleHabilidadesBlandasChange = event => {
-    const selectedOptions = event.target.selectedOptions
-    const selectedValues = Array.from(selectedOptions).map(
-      option => option.value
-    )
-    setHabilidadesBlandas(selectedValues)
+  const handleImageChange = (name, selectedFile) => {
+    if (selectedFile) {
+      // const imageUrl = URL.createObjectURL(selectedFile)
+      setProfileData(prevProfileData => ({
+        ...prevProfileData,
+        [name]: selectedFile,
+      }))
+    }
   }
 
-  const [githubProfile, setGithubProfile] = useState('')
-  const [linkedinProfile, setLinkedinProfile] = useState('')
-  const [websiteUrl, setWebsiteUrl] = useState('')
-  const [nombre, setNombre] = useState('')
-  const [apellido, setApellido] = useState('')
-  const [telefono, setTelefono] = useState('')
-  const [localizacion, setLocalizacion] = useState('')
-  const [idioma, setIdioma] = useState('')
-  const [nivelEducacion, setNivelEducacion] = useState('')
-  const [lenguajesProgramacion, setLenguajesProgramacion] = useState([])
-  const [habilidadesBlandas, setHabilidadesBlandas] = useState([])
-  const [permisoTrabajo, setPermisoTrabajo] = useState(false)
-  const [cvFile, setCvFile] = useState(null)
-
-  const [nombreProyecto1, setNombreProyecto1] = useState('')
-  const [descripcionProyecto1, setDescripcionProyecto1] = useState('')
-  const [repositorioProyecto1, setRepositorioProyecto1] = useState('')
-  const [urlProyecto1, setUrlProyecto1] = useState('')
+  const handleFileChange = event => {
+    const selectedFile = event.target.files[0]
+    if (selectedFile) {
+      setProfileData(prevData => ({
+        ...prevData,
+        cv: selectedFile,
+      }))
+    }
+  }
 
   const handleSubmit = async event => {
     event.preventDefault()
 
-    const formData = new FormData()
-    formData.append('githubProfile', githubProfile)
-    formData.append('linkedinProfile', linkedinProfile)
-    formData.append('websiteUrl', websiteUrl)
-    formData.append('nombre', nombre)
-    formData.append('apellido', apellido)
-    formData.append('telefono', telefono)
-    formData.append('localizacion', localizacion)
-    formData.append('idioma', idioma)
-    formData.append('nivelEducacion', nivelEducacion)
-    formData.append(
-      'lenguajesProgramacion',
-      JSON.stringify(lenguajesProgramacion)
-    )
-    formData.append('habilidadesBlandas', JSON.stringify(habilidadesBlandas))
-    formData.append('permisoTrabajo', permisoTrabajo)
-    formData.append('cvFile', cvFile)
+    const dataWithCreatedAt = {
+      ...profileData,
+      createdAt: new Date(), // Agregar la fecha y hora actuales
+    }
 
     try {
-      const response = await fetch('URL_DE_LA_API', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (response.ok) {
-      } else {
+      if (profileData.cv) {
+        const cvFile = profileData.cv
+        const cvStorageRef = ref(
+          storage,
+          'cvs/' + new Date().getTime() + '_' + cvFile.name
+        )
+        await uploadBytes(cvStorageRef, cvFile)
+        const cvURL = await getDownloadURL(cvStorageRef)
+        dataWithCreatedAt.cv = cvURL
       }
-    } catch (error) {}
+
+      if (profileData.photo) {
+        const photoFile = profileData.photo
+        const photoStorageRef = ref(
+          storage,
+          'photos/' + new Date().getTime() + '_' + photoFile.name
+        )
+        await uploadBytes(photoStorageRef, photoFile)
+        const photoURL = await getDownloadURL(photoStorageRef)
+        dataWithCreatedAt.photo = photoURL
+      }
+
+      if (profileData.imageWebsiteOne) {
+        const imageWebsiteOneFile = profileData.imageWebsiteOne
+        const imageWebsiteOneStorageRef = ref(
+          storage,
+          'websites/' + new Date().getTime() + '_' + imageWebsiteOneFile.name
+        )
+        await uploadBytes(imageWebsiteOneStorageRef, imageWebsiteOneFile)
+        const imageWebsiteOneURL = await getDownloadURL(
+          imageWebsiteOneStorageRef
+        )
+        dataWithCreatedAt.imageWebsiteOne = imageWebsiteOneURL
+      }
+
+      console.log(dataWithCreatedAt)
+
+      const response = await fetch(
+        'https://64e8aae299cf45b15fdff78c.mockapi.io/candidate',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(dataWithCreatedAt),
+        }
+      )
+      if (response.ok) {
+        console.log(
+          'Profile candidate created successfully:',
+          dataWithCreatedAt
+        )
+        window.location.href = '/buscar-empleo'
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
   // NOT USED
   const [imageProjectTwoSrc, setImageProjectTwoSrc] = useState(
@@ -137,11 +183,19 @@ const CreateProfileUserPage = () => {
                       accept='image/*'
                       style={{ display: 'none' }}
                       id='imageInput'
-                      onChange={handleImageProfileChange}
+                      onChange={event =>
+                        handleImageChange('photo', event.target.files[0])
+                      }
+                      name='photo'
                     />
                     <label htmlFor='imageInput'>
                       <img
-                        src={imageProfileSrc}
+                        src={
+                          profileData.photo !==
+                          'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-4.png'
+                            ? URL.createObjectURL(profileData.photo)
+                            : profileData.photo
+                        }
                         className='rounded-circle'
                         alt=''
                         width='160'
@@ -161,10 +215,9 @@ const CreateProfileUserPage = () => {
                           type='text'
                           placeholder='https://github.com/nombre'
                           className='form-control text-sm rounded-1'
-                          value={githubProfile}
-                          onChange={event =>
-                            setGithubProfile(event.target.value)
-                          }
+                          value={profileData.github}
+                          onChange={handleInputChange}
+                          name='github'
                         />
                       </div>
                       <div className='d-flex gap-3 '>
@@ -177,10 +230,9 @@ const CreateProfileUserPage = () => {
                           type='text'
                           placeholder='https://www.linkedin.com/in/nombre/'
                           className='form-control text-sm rounded-1'
-                          value={linkedinProfile}
-                          onChange={event =>
-                            setLinkedinProfile(event.target.value)
-                          }
+                          value={profileData.linkedin}
+                          onChange={handleInputChange}
+                          name='linkedin'
                         />
                       </div>
                       <div className='d-flex gap-3 '>
@@ -193,8 +245,9 @@ const CreateProfileUserPage = () => {
                           type='text'
                           placeholder='https://bento.me/nombre'
                           className='form-control text-sm rounded-1'
-                          value={websiteUrl}
-                          onChange={event => setWebsiteUrl(event.target.value)}
+                          value={profileData.website}
+                          onChange={handleInputChange}
+                          name='website'
                         />
                       </div>
                     </div>
@@ -208,12 +261,13 @@ const CreateProfileUserPage = () => {
                     <input
                       type='text'
                       className='form-control rounded-1 text-md'
-                      id='nombre'
-                      placeholder='Ingrese su nombre'
-                      onChange={event => setNombre(event.target.value)}
-                      value={nombre}
+                      id='name'
+                      placeholder='Ingrese su Nombre'
+                      onChange={handleInputChange}
+                      value={profileData.name}
+                      name='name'
                     />
-                    <label htmlFor='nombre' className='form-label text-md'>
+                    <label htmlFor='name' className='form-label text-md'>
                       Nombre
                     </label>
                   </div>
@@ -221,12 +275,13 @@ const CreateProfileUserPage = () => {
                     <input
                       type='text'
                       className='form-control rounded-1 text-md '
-                      id='apellido'
+                      id='lastname'
                       placeholder='Ingrese su apellido'
-                      onChange={event => setApellido(event.target.value)}
-                      value={apellido}
+                      onChange={handleInputChange}
+                      value={profileData.lastname}
+                      name='lastname'
                     />
-                    <label htmlFor='apellido' className='form-label text-md'>
+                    <label htmlFor='lastname' className='form-label text-md'>
                       Apellido(s)
                     </label>
                   </div>
@@ -234,11 +289,13 @@ const CreateProfileUserPage = () => {
                     <input
                       type='number'
                       className='form-control rounded-1 text-md customWidth'
-                      id='telefono'
+                      id='phone'
                       placeholder='Ingrese su teléfono'
-                      onChange={event => setTelefono(event.target.value)}
+                      onChange={handleInputChange}
+                      value={profileData.phone}
+                      name='phone'
                     />
-                    <label htmlFor='telefono' className='form-label text-md'>
+                    <label htmlFor='phone' className='form-label text-md'>
                       Teléfono
                     </label>
                   </div>
@@ -251,15 +308,13 @@ const CreateProfileUserPage = () => {
                     <input
                       type='text'
                       className='form-control rounded-1 text-md'
-                      id='localizacion'
+                      id='location'
                       placeholder='Ingrese su localización'
-                      onChange={event => setLocalizacion(event.target.value)}
-                      value={localizacion}
+                      onChange={handleInputChange}
+                      value={profileData.location}
+                      name='location'
                     />
-                    <label
-                      htmlFor='localizacion'
-                      className='form-label text-md'
-                    >
+                    <label htmlFor='location' className='form-label text-md'>
                       Localización
                     </label>
                   </div>
@@ -267,12 +322,16 @@ const CreateProfileUserPage = () => {
                     <input
                       type='text'
                       className='form-control rounded-1 text-md'
-                      id='idioma'
+                      id='secondLanguage'
                       placeholder='Ingrese su localización'
-                      onChange={event => setIdioma(event.target.value)}
-                      value={idioma}
+                      onChange={handleInputChange}
+                      value={profileData.secondLanguage}
+                      name='secondLanguage'
                     />
-                    <label htmlFor='idioma' className='form-label text-md'>
+                    <label
+                      htmlFor='secondLanguage'
+                      className='form-label text-md'
+                    >
                       Segundo idioma
                     </label>
                   </div>
@@ -280,15 +339,13 @@ const CreateProfileUserPage = () => {
                     <input
                       type='text'
                       className='form-control rounded-1 text-md customWidth'
-                      id='nivelEducacion'
+                      id='education'
                       placeholder='Ingrese su nivel de educación'
-                      onChange={event => setNivelEducacion(event.target.value)}
-                      value={nivelEducacion}
+                      onChange={handleInputChange}
+                      value={profileData.education}
+                      name='education'
                     />
-                    <label
-                      htmlFor='nivelEducacion'
-                      className='form-label text-md'
-                    >
+                    <label htmlFor='education' className='form-label text-md'>
                       Nivel de educación
                     </label>
                   </div>
@@ -299,7 +356,7 @@ const CreateProfileUserPage = () => {
                 <div className='d-lg-flex justify-content-start gap-3'>
                   <div className='col-lg-5 col-12 mb-3 mb-lg-0'>
                     <label
-                      htmlFor='lenguajesProgramacion'
+                      htmlFor='technologies'
                       className='form-label text-sm'
                     >
                       Lenguajes de programación (Elección múltiple)
@@ -309,9 +366,14 @@ const CreateProfileUserPage = () => {
                       multiple
                       aria-label='Multiple select example'
                       style={{ height: '140px' }}
-                      id='lenguajesProgramacion'
-                      onChange={handleLenguajesProgramacionChange}
-                      value={lenguajesProgramacion}
+                      id='technologies'
+                      onChange={event =>
+                        handleArrayChange(
+                          'technologies',
+                          event.target.selectedOptions
+                        )
+                      }
+                      value={profileData.technologies}
                     >
                       <option value='cPlusPlus'>C++</option>
                       <option value='cSharp'>C#</option>
@@ -336,10 +398,7 @@ const CreateProfileUserPage = () => {
                     </select>
                   </div>
                   <div className='col-lg-5 col-12'>
-                    <label
-                      htmlFor='habilidadesBlandas'
-                      className='form-label text-sm'
-                    >
+                    <label htmlFor='softSkills' className='form-label text-sm'>
                       Habilidades blandas (Elección múltiple)
                     </label>
                     <select
@@ -347,9 +406,14 @@ const CreateProfileUserPage = () => {
                       multiple
                       aria-label='Multiple select example'
                       style={{ height: '140px' }}
-                      id='habilidadesBlandas'
-                      onChange={handleHabilidadesBlandasChange}
-                      value={habilidadesBlandas}
+                      id='softSkills'
+                      onChange={event =>
+                        handleArrayChange(
+                          'softSkills',
+                          event.target.selectedOptions
+                        )
+                      }
+                      value={profileData.softSkills}
                     >
                       <option value='adaptabilidad'>Adaptabilidad</option>
                       <option value='aprendizajeContinuo'>
@@ -398,15 +462,14 @@ const CreateProfileUserPage = () => {
                     <input
                       className='form-check-input'
                       type='checkbox'
-                      id='permisoTrabajo'
-                      onChange={event =>
-                        setPermisoTrabajo(event.target.checked)
-                      }
-                      value={permisoTrabajo}
+                      id='permissionWork'
+                      onChange={handleCheckboxChange}
+                      checked={profileData.permissionWork}
+                      name='permissionWork'
                     />
                     <label
                       className='form-check-label text-md'
-                      htmlFor='permisoTrabajo'
+                      htmlFor='permissionWork'
                     >
                       Tengo permiso de trabajo en España.
                     </label>
@@ -424,7 +487,9 @@ const CreateProfileUserPage = () => {
                       className='form-control form-control-sm rounded-1 text-sm'
                       id='formFileSm'
                       type='file'
-                      onChange={event => setCvFile(event.target.files[0])}
+                      onChange={handleFileChange}
+                      accept='application/pdf'
+                      name='cv'
                     />
                   </div>
                 </div>
@@ -454,11 +519,22 @@ const CreateProfileUserPage = () => {
                         accept='image/*'
                         style={{ display: 'none' }}
                         id='imageInput1'
-                        onChange={handleImageProjectOneChange}
+                        onChange={event =>
+                          handleImageChange(
+                            'imageWebsiteOne',
+                            event.target.files[0]
+                          )
+                        }
+                        name='imageWebsiteOne'
                       />
                       <label htmlFor='imageInput1'>
                         <img
-                          src={imageProjectOneSrc}
+                          src={
+                            profileData.imageWebsiteOne !==
+                            'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210401151214/What-is-Website.png'
+                              ? URL.createObjectURL(profileData.imageWebsiteOne)
+                              : profileData.imageWebsiteOne
+                          }
                           className='card-img-top'
                           alt='...'
                           width={'100%'}
@@ -470,15 +546,14 @@ const CreateProfileUserPage = () => {
                           <input
                             type='text'
                             className='form-control rounded-1 text-md'
-                            id='nombreProyecto1'
+                            id='titleWebsiteOne'
                             placeholder='Ingrese nombre del proyecto'
-                            value={nombreProyecto1}
-                            onChange={event =>
-                              setNombreProyecto1(event.target.value)
-                            }
+                            value={profileData.titleWebsiteOne}
+                            onChange={handleInputChange}
+                            name='titleWebsiteOne'
                           />
                           <label
-                            htmlFor='nombreProyecto1'
+                            htmlFor='titleWebsiteOne'
                             className='form-label text-md'
                           >
                             Título del proyecto #1
@@ -490,10 +565,9 @@ const CreateProfileUserPage = () => {
                             placeholder='Leave a comment here'
                             id='floatingTextarea1'
                             style={{ height: '100px' }}
-                            value={descripcionProyecto1}
-                            onChange={event =>
-                              setDescripcionProyecto1(event.target.value)
-                            }
+                            value={profileData.descriptionWebsiteOne}
+                            onChange={handleInputChange}
+                            name='descriptionWebsiteOne'
                           ></textarea>
                           <label
                             htmlFor='floatingTextarea1'
@@ -507,19 +581,17 @@ const CreateProfileUserPage = () => {
                             type='text'
                             className='form-control rounded-1 text-sm mb-2'
                             placeholder='Repositorio del proyecto #1'
-                            value={repositorioProyecto1}
-                            onChange={event =>
-                              setRepositorioProyecto1(event.target.value)
-                            }
+                            value={profileData.repositoryWebsiteOne}
+                            onChange={handleInputChange}
+                            name='repositoryWebsiteOne'
                           />
                           <input
                             type='text'
                             className='form-control rounded-1 text-sm'
                             placeholder='URL del proyecto #1 si esta publicado'
-                            value={urlProyecto1}
-                            onChange={event =>
-                              setUrlProyecto1(event.target.value)
-                            }
+                            value={profileData.urlWebsiteOne}
+                            onChange={handleInputChange}
+                            name='urlWebsiteOne'
                           />
                         </div>
                       </div>
