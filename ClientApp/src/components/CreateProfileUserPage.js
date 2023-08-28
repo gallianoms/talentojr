@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { storage } from '../firebaseConfig'
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
 const CreateProfileUserPage = () => {
   const [profileData, setProfileData] = useState({
@@ -120,7 +120,7 @@ const CreateProfileUserPage = () => {
       console.log(dataWithCreatedAt)
 
       const response = await fetch(
-        'https://64e8aae299cf45b15fdff78c.mockapi.io/candidate',
+        'https://64e8aae299cf45b15fdff78c.mockapi.io/candidates',
         {
           method: 'POST',
           headers: {
@@ -375,26 +375,26 @@ const CreateProfileUserPage = () => {
                       }
                       value={profileData.technologies}
                     >
-                      <option value='cPlusPlus'>C++</option>
-                      <option value='cSharp'>C#</option>
-                      <option value='css'>CSS</option>
-                      <option value='go'>Goland</option>
-                      <option value='html'>HTML</option>
-                      <option value='java'>Java</option>
-                      <option value='javascript'>JavaScript</option>
-                      <option value='kotlin'>Kotlin</option>
-                      <option value='lua'>Lua</option>
-                      <option value='perl'>Perl</option>
-                      <option value='php'>PHP</option>
-                      <option value='python'>Python</option>
-                      <option value='r'>R</option>
-                      <option value='ruby'>Ruby</option>
-                      <option value='rust'>Rust</option>
-                      <option value='scala'>Scala</option>
-                      <option value='sql'>SQL</option>
-                      <option value='swift'>Swift</option>
-                      <option value='typescript'>TypeScript</option>
-                      <option value='haskell'>Haskell</option>
+                      <option value='C++'>C++</option>
+                      <option value='C#'>C#</option>
+                      <option value='CSS'>CSS</option>
+                      <option value='GO'>Goland</option>
+                      <option value='HTML'>HTML</option>
+                      <option value='Java'>Java</option>
+                      <option value='JavaScript'>JavaScript</option>
+                      <option value='Kotlin'>Kotlin</option>
+                      <option value='Lua'>Lua</option>
+                      <option value='Perl'>Perl</option>
+                      <option value='PHP'>PHP</option>
+                      <option value='Python'>Python</option>
+                      <option value='R'>R</option>
+                      <option value='Ruby'>Ruby</option>
+                      <option value='Rust'>Rust</option>
+                      <option value='Scala'>Scala</option>
+                      <option value='SQL'>SQL</option>
+                      <option value='Swift'>Swift</option>
+                      <option value='TypeScript'>TypeScript</option>
+                      <option value='Haskell'>Haskell</option>
                     </select>
                   </div>
                   <div className='col-lg-5 col-12'>
@@ -415,42 +415,48 @@ const CreateProfileUserPage = () => {
                       }
                       value={profileData.softSkills}
                     >
-                      <option value='adaptabilidad'>Adaptabilidad</option>
-                      <option value='aprendizajeContinuo'>
-                        Aprendizaje continuo
+                      <option value='Adaptabilidad'>Adaptabilidad</option>
+                      <option value='Aprendizaje Continuo'>
+                        Aprendizaje Continuo
                       </option>
-                      <option value='autoconfianza'>Autoconfianza</option>
-                      <option value='colaboracion'>Colaboración</option>
-                      <option value='comunicacionEfectiva'>
-                        Comunicación efectiva
+                      <option value='Autoconfianza'>Autoconfianza</option>
+                      <option value='Colaboracion'>Colaboración</option>
+                      <option value='Comunicacion Efectiva'>
+                        Comunicación Efectiva
                       </option>
-                      <option value='comunicacionIntercultural'>
-                        Comunicación intercultural
+                      <option value='Comunicacion Intercultural'>
+                        Comunicación Intercultural
                       </option>
-                      <option value='creatividad'>Creatividad</option>
-                      <option value='empatia'>Empatía</option>
-                      <option value='escuchaActiva'>Escucha activa</option>
-                      <option value='flexibilidad'>Flexibilidad</option>
-                      <option value='gestionTiempo'>Gestión del tiempo</option>
-                      <option value='habilidadesNegociacion'>
-                        Habilidades de negociación
+                      <option value='Creatividad'>Creatividad</option>
+                      <option value='Empatia'>Empatía</option>
+                      <option value='Escucha Activa'>Escucha Activa</option>
+                      <option value='Flexibilidad'>Flexibilidad</option>
+                      <option value='Gestion del Tiempo'>
+                        Gestión del Tiempo
                       </option>
-                      <option value='inteligenciaEmocional'>
-                        Inteligencia emocional
+                      <option value='Habilidades de Negociacion'>
+                        Habilidades de Negociación
                       </option>
-                      <option value='liderazgo'>Liderazgo</option>
-                      <option value='pensamientoCritico'>
-                        Pensamiento crítico
+                      <option value='Inteligencia Emocional'>
+                        Inteligencia Emocional
                       </option>
-                      <option value='pensamientoLateral'>
-                        Pensamiento lateral
+                      <option value='Liderazgo'>Liderazgo</option>
+                      <option value='Pensamiento Critico'>
+                        Pensamiento Crítico
                       </option>
-                      <option value='resiliencia'>Resiliencia</option>
-                      <option value='resolucionProblemas'>
-                        Resolución de problemas
+                      <option value='Pensamiento Lateral'>
+                        Pensamiento Lateral
                       </option>
-                      <option value='tomaDecisiones'>Toma de decisiones</option>
-                      <option value='trabajoEquipo'>Trabajo en equipo</option>
+                      <option value='Resiliencia'>Resiliencia</option>
+                      <option value='Resolucion de Problemas'>
+                        Resolución de Problemas
+                      </option>
+                      <option value='Toma de Decisiones'>
+                        Toma de Decisiones
+                      </option>
+                      <option value='Trabajo en Equipo'>
+                        Trabajo en Equipo
+                      </option>
                     </select>
                   </div>
                 </div>

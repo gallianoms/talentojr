@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineLinkedin, AiOutlineGithub } from 'react-icons/ai'
 import { HiDesktopComputer } from 'react-icons/hi'
 
 const CandidateProfilePage = () => {
+  const [candidateData, setCandidateData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://64e8aae299cf45b15fdff78c.mockapi.io/candidates/1'
+          // TODO: replace ID
+        )
+        const data = await response.json()
+        setCandidateData(data)
+      } catch (error) {
+        console.log('Error fetching data', error)
+      }
+    }
+    fetchData()
+  }, [])
+
+  console.log(candidateData)
+
+  // const technologiesList = candidateData.technologies.join(', ')
+  // const skillsList = candidateData.softSkills.join(', ')
+
   return (
     <>
       <div className='container mt-5'>
@@ -11,67 +34,88 @@ const CandidateProfilePage = () => {
           <div className='col-lg-4 border'>
             <div className='text-center'>
               <img
-                src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+                src={candidateData.photo}
                 alt='Profile'
                 className='img-fluid rounded-circle mt-4'
                 width='160'
               />
-              <h4 className='mt-3'>John Doe</h4>
-              <p className='text-muted m-0 mb-1'>john.doe@gmail.com</p>
-              <p className='text-muted m-0 mb-1'>+123 456 7890</p>
+              <h4 className='mt-3'>
+                {candidateData.name} {candidateData.lastname}
+              </h4>
+              <p className='text-muted m-0 mb-1'>{candidateData.email}</p>
+              <p className='text-muted m-0 mb-1'>{candidateData.phone}</p>
               <div
                 className='gap-5 d-flex justify-content-center mt-2'
                 style={{ fontSize: '27px' }}
               >
-                <a href='http://'>
-                  {' '}
+                <a
+                  href={candidateData.linkedin}
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <AiOutlineLinkedin style={{ color: '#0b65c2' }} />
                 </a>
-                <a href='http://'>
-                  {' '}
+                <a href={candidateData.github} target='_blank' rel='noreferrer'>
                   <AiOutlineGithub style={{ color: '#02040a' }} />
                 </a>
-                <a href='http://'>
-                  {' '}
+                <a
+                  href={candidateData.website}
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <HiDesktopComputer style={{ color: '#6b7280' }} />
                 </a>
               </div>
             </div>
           </div>
           {/* Education - Location - Second Language - Permission - Code Language - Soft Skills - CV */}
-          <div className='col-lg-8 '>
+          <div className='col-lg-8'>
             <div className='row border'>
               <div className='col-md-5'>
                 <h5 className='mt-4'>Nivel de educación</h5>
-                <p>Lic. Ciencias de la Computacion</p>
+                <p>{candidateData.education}</p>
                 <h5 className='mt-4'>Localización</h5>
-                <p>Barcelona, España</p>
+                <p>{candidateData.location}</p>
               </div>
               <div className='col-md-7'>
                 <h5 className='mt-4'>Lenguajes de Programación</h5>
-                <p>JavaScript, HTML, CSS, C#, Swift</p>
+                {candidateData.technologies &&
+                  candidateData.technologies.length > 0 && (
+                    <p>{candidateData.technologies.join(', ')}</p>
+                  )}
                 <h5 className='mt-4'>Habilidades blandas</h5>
-                <p>Trabajo en equipo, Liderazgo, Escucha activa, Empatía</p>
+                {candidateData.softSkills &&
+                  candidateData.softSkills.length > 0 && (
+                    <p>{candidateData.softSkills.join(', ')}</p>
+                  )}
               </div>
               <div className='col-md-5'>
                 <h5 className='mt-4'>Segundo Idioma</h5>
-                <p>Ingles</p>
-                <h5 className='mt-4'>Permiso de trabajo</h5>
-                <p>Si</p>
+                <p>{candidateData.secondLanguage}</p>
+                <h5 className='mt-4'>Permiso de trabajo en España</h5>
+                <p>{candidateData.permissionWork === true ? 'Si' : 'No'}</p>
               </div>
               <div className='col-md-7'>
                 <h5 className='mt-4'>Curriculum Vitae (CV)</h5>
                 <div className='d-flex gap-3'>
-                  <a
-                    href='/'
+                  {/* <a
+                    href={candidateData.cv}
+                    target='_blank'
+                    rel='noreferrer'
                     className=' d-flex align-self-center'
                     style={{ textDecoration: 'none' }}
                   >
                     Revisar en línea
-                  </a>
-                  <button className='btn btn-primary rounded-1 text-md'>
+                  </a> */}
+                  <a
+                    href={candidateData.cv}
+                    target='_blank'
+                    rel='noreferrer'
+                    download
+                    className='btn btn-primary rounded-1 text-md'
+                  >
                     Descargar PDF
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -92,7 +136,7 @@ const CandidateProfilePage = () => {
                 />
                 <label htmlFor='imageInput1'>
                   <img
-                    src='https://cdn.sanity.io/images/v6oximkk/production/270e6dbf7e0f140f4dca2984145f0b3177a9e744-1000x679.png?w=1000&h=679&auto=format'
+                    src={candidateData.imageWebsiteOne}
                     className='card-img-top'
                     alt='...'
                     width={'100%'}
@@ -101,62 +145,27 @@ const CandidateProfilePage = () => {
                 </label>
                 <div className='card-body'>
                   <div className='col-lg-12 form-floating mb-3'>
-                    {/* <input
-                      type='text'
-                      className='form-control rounded-1 text-md'
-                      id='nombreProyecto1'
-                      required
-                      placeholder='Ingrese nombre del proyecto'
-                    />
-                    <label
-                      htmlFor='nombreProyecto1'
-                      className='form-label text-md'
-                    >
-                      Título del proyecto #1
-                    </label> */}
-                    <h5>Lorem ipsum dolor sit.</h5>
+                    <h5>{candidateData.titleWebsiteOne}</h5>
                   </div>
                   <div className='form-floating mb-3'>
-                    {/* <textarea
-                      className='form-control rounded-1 text-md'
-                      placeholder='Leave a comment here'
-                      id='floatingTextarea1'
-                      style={{ height: '100px' }}
-                    ></textarea>
-                    <label htmlFor='floatingTextarea1' className='text-md'>
-                      Descripción corta del proyecto #1
-                    </label> */}
                     <p className='text-md'>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Dicta voluptas eveniet id possimus illo aspernatur aliquam
-                      dolore, consectetur odio illum quia cum iure quod vero
-                      rerum voluptatibus doloremque excepturi ipsam!
+                      {candidateData.descriptionWebsiteOne}
                     </p>
                   </div>
                   <div className='col-lg-12'>
-                    {/* <input
-                      type='text'
-                      className='form-control rounded-1 text-sm mb-2'
-                      placeholder='Repositorio del proyecto #1'
-                    /> */}
                     <a
                       href='http://reposito.com'
                       className='d-block  text-md mb-1'
                       style={{ textDecoration: 'none' }}
                     >
-                      Repositorio del proyecto
+                      {candidateData.repositoryWebsiteOne}
                     </a>
-                    {/* <input
-                      type='text'
-                      className='form-control rounded-1 text-sm'
-                      placeholder='URL del proyecto #1 si esta publicado'
-                    /> */}
                     <a
                       href='http://url.com'
                       className='d-inline-block  text-md'
                       style={{ textDecoration: 'none' }}
                     >
-                      URL del proyecto
+                      {candidateData.urlWebsiteOne}
                     </a>
                   </div>
                 </div>
@@ -166,7 +175,7 @@ const CandidateProfilePage = () => {
         </div>
 
         {/* Project 2 */}
-        <div className='col-lg-4 mt-4 rounded-1 '>
+        {/* <div className='col-lg-4 mt-4 rounded-1 '>
           <div className='row mb-3'>
             <div className='col-lg-12'>
               <div className='card'>
@@ -228,10 +237,10 @@ const CandidateProfilePage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Project 3 */}
-        <div className='col-lg-4 mt-4 rounded-1 '>
+        {/* <div className='col-lg-4 mt-4 rounded-1 '>
           <div className='row mb-3'>
             <div className='col-lg-12'>
               <div className='card'>
@@ -293,7 +302,7 @@ const CandidateProfilePage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )

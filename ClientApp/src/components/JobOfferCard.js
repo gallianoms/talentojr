@@ -4,6 +4,8 @@ import {
   HiOutlineCurrencyEuro,
   HiOutlineAcademicCap,
 } from 'react-icons/hi'
+import { formatDistanceToNow } from 'date-fns'
+import { es } from 'date-fns/locale'
 
 const JobOfferCard = ({ offer }) => {
   const {
@@ -18,18 +20,6 @@ const JobOfferCard = ({ offer }) => {
     createdAt,
   } = offer
 
-  console.log(
-    id,
-    title,
-    description,
-    experience,
-    location,
-    mode,
-    salary,
-    technologies,
-    createdAt
-  )
-
   // TODO: Resolve button to send offer
 
   return (
@@ -40,7 +30,7 @@ const JobOfferCard = ({ offer }) => {
             <div className='d-flex justify-content-between'>
               <h5 className='card-title'>{title}</h5>
               <h6 className='card-subtitle mb-2 text-muted d-flex align-self-center '>
-                Remoto
+                {mode}
               </h6>
             </div>
             <p className='card-text text-md mb-4'>{description}</p>
@@ -58,20 +48,23 @@ const JobOfferCard = ({ offer }) => {
                     className='d-flex align-self-center'
                     style={{ fontSize: '20px' }}
                   />
-                  <span className='mx-2 text-md'>18k - 22k</span>
+                  <span className='mx-2 text-md'>{salary}</span>
                 </div>
                 <div className='d-flex mb-1'>
                   <HiOutlineLocationMarker
                     className='d-flex align-self-center'
                     style={{ fontSize: '20px' }}
                   />
-                  <span className='mx-2 text-md'>Barcelona</span>
+                  <span className='mx-2 text-md'>{location}</span>
                 </div>
               </div>
               <div className='col-lg-8 d-flex align-items-center '>
                 <div className='d-flex flex-wrap gap-2 justify-content-end'>
-                  {technologies.map(technology => (
-                    <span className='badge rounded-pill text-bg-light p-2'>
+                  {technologies.map((technology, idx) => (
+                    <span
+                      key={idx}
+                      className='badge rounded-pill text-bg-light p-2'
+                    >
                       {technology}
                     </span>
                   ))}
@@ -79,14 +72,18 @@ const JobOfferCard = ({ offer }) => {
               </div>
             </div>
             <div className='row'>
-              <div className='col-lg-6 d-flex align-items-center'>
+              <div className='col-lg-7 d-flex align-items-center'>
                 <p className='card-text d-flex'>
+                  {/* //TODO: Add date correctly */}
                   <small className='text-body-secondary text-sm text-muted'>
-                    Oferta añadida hace 3 minutos
+                    Oferta creada{' '}
+                    {formatDistanceToNow(new Date(createdAt), {
+                      locale: es,
+                    })}
                   </small>
                 </p>
               </div>
-              <div className='col-lg-6 pb-4 pb-lg-0 d-flex justify-content-end'>
+              <div className='col-lg-5 pb-4 pb-lg-0 d-flex justify-content-end'>
                 <button
                   className='btn btn-primary text-md rounded-1'
                   type='submit'
