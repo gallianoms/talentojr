@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   HiOutlineLocationMarker,
   HiOutlineCurrencyEuro,
@@ -6,6 +6,7 @@ import {
 } from 'react-icons/hi'
 import { formatDistanceToNow } from 'date-fns'
 import { es } from 'date-fns/locale'
+
 
 const JobOfferCard = ({ offer }) => {
   const {
@@ -20,6 +21,7 @@ const JobOfferCard = ({ offer }) => {
     createdAt,
   } = offer
 
+
   // TODO: Resolve button to send offer
 
   return (
@@ -33,27 +35,28 @@ const JobOfferCard = ({ offer }) => {
                 {mode}
               </h6>
             </div>
-            <p className='card-text text-md mb-4'>{description}</p>
-            <div className='row mb-4'>
-              <div className='col-lg-4 '>
-                <div className='d-flex mb-1'>
+            <p className="card-text text-md mb-4">{description}</p>
+            <div className="row mb-4">
+              <div className="col-lg-4 ">
+                <div className="d-flex mb-1">
                   <HiOutlineAcademicCap
-                    className='d-flex align-self-center'
-                    style={{ fontSize: '20px' }}
+                    className="d-flex align-self-center"
+                    style={{ fontSize: "20px" }}
                   />
-                  <span className='mx-2 text-md'>{experience}</span>
+                  <span className="mx-2 text-md">{experience}</span>
                 </div>
-                <div className='d-flex mb-1'>
+                <div className="d-flex mb-1">
                   <HiOutlineCurrencyEuro
-                    className='d-flex align-self-center'
-                    style={{ fontSize: '20px' }}
+                    className="d-flex align-self-center"
+                    style={{ fontSize: "20px" }}
                   />
                   <span className='mx-2 text-md'>{salary}</span>
+
                 </div>
-                <div className='d-flex mb-1'>
+                <div className="d-flex mb-1">
                   <HiOutlineLocationMarker
-                    className='d-flex align-self-center'
-                    style={{ fontSize: '20px' }}
+                    className="d-flex align-self-center"
+                    style={{ fontSize: "20px" }}
                   />
                   <span className='mx-2 text-md'>{location}</span>
                 </div>
@@ -74,7 +77,6 @@ const JobOfferCard = ({ offer }) => {
             <div className='row'>
               <div className='col-lg-7 d-flex align-items-center'>
                 <p className='card-text d-flex'>
-                  {/* //TODO: Add date correctly */}
                   <small className='text-body-secondary text-sm text-muted'>
                     Oferta creada{' '}
                     {formatDistanceToNow(new Date(createdAt), {
@@ -85,8 +87,8 @@ const JobOfferCard = ({ offer }) => {
               </div>
               <div className='col-lg-5 pb-4 pb-lg-0 d-flex justify-content-end'>
                 <button
-                  className='btn btn-primary text-md rounded-1'
-                  type='submit'
+                  className="btn btn-primary text-md rounded-1"
+                  type="submit"
                 >
                   Aplicar oferta
                 </button>
@@ -96,7 +98,7 @@ const JobOfferCard = ({ offer }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default JobOfferCard
+export default JobOfferCard;
