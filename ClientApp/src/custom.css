@@ -419,4 +419,8 @@ thead{
   position: relative; height: 700px
 }
 
+.editLink{
+  text-decoration: none;
+  color: white;
+}
 

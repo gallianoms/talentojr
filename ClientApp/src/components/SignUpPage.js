@@ -39,7 +39,10 @@ const SignUpPage = () => {
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    const apiUrl = "https://64e8bf1099cf45b15fe0132e.mockapi.io/register";
+    const apiUrl =
+      register.role === "candidato"
+        ? "https://64e8aae299cf45b15fdff78c.mockapi.io/candidates"
+        : "https://64e8aae299cf45b15fdff78c.mockapi.io/companies";
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -159,8 +162,8 @@ const SignUpPage = () => {
                       className="form-check-input"
                       id="remember"
                       name="registro"
-                      value="empresa"
-                      checked={register.role === "empresa"}
+                      value="Empresa"
+                      checked={register.role === "Empresa"}
                       onChange={handleInputChange}
                     />
                     <label

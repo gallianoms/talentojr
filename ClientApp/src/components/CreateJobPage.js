@@ -2,20 +2,21 @@ import React, { useState } from "react";
 
 const CreateJob = () => {
   const [job, sethandleJob] = useState({
-    titleJob: "",
+    title: "",
     description: "",
     location: "",
-    modeOfWork: "",
-    skills: [""],
-    salaryRange: "",
+    mode: "",
+    technologies: [""],
+    salary: "",
   });
 
+  const companyId = JSON.parse(localStorage.getItem("user"));
   const [errors, setErrors] = useState({
-    titleJob: "",
+    title: "",
     description: "",
     location: "",
-    modeOfWork: "",
-    salaryRange: "",
+    mode: "",
+    salary: "",
   });
 
   const handleInputChange = (event) => {
@@ -30,32 +31,52 @@ const CreateJob = () => {
     event.preventDefault();
 
     const newErrors = {
-      titleJob:
-        job.titleJob === ""
-          ? "Campo titulo de trabajo no puede estar vacio"
-          : "",
+      title:
+        job.title === "" ? "Campo titulo de trabajo no puede estar vacio" : "",
       description:
         job.description === ""
           ? "Campo descripcion de trabajo no puede estar vacio"
           : "",
-      modeOfWork:
-        job.modeOfWork === "" ? "Escoge opcion para modo de trabajo" : "",
-      salaryRange:
-        job.salaryRange === ""
-          ? "Campo rango salario no puede estar vacio"
-          : "",
+      mode: job.mode === "" ? "Escoge opcion para modo de trabajo" : "",
+      salary:
+        job.salary === "" ? "Campo rango salario no puede estar vacio" : "",
     };
 
     setErrors(errors);
 
     setErrors(newErrors);
     if (
-      !newErrors.titleJob &&
+      !newErrors.title &&
       !newErrors.description &&
-      !newErrors.modeOfWork &&
-      !newErrors.salaryRange
+      !newErrors.mode &&
+      !newErrors.salary
     ) {
-      console.log("Text values:", job);
+      const newJobOffer = {
+        title: job.title,
+        description: job.description,
+        location: job.location,
+        modo: job.mode,
+        technologies: job.technologies.split(",").map((tech) => tech.trim()),
+        salary: job.salary,
+      };
+      fetch(`https://64e8aae299cf45b15fdff78c.mockapi.io/offers`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newJobOffer),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          sethandleJob({
+            title: "",
+            description: "",
+            location: "",
+            mode: "",
+            technologies: [""],
+            salary: "",
+          });
+        });
     }
   };
 
@@ -69,16 +90,16 @@ const CreateJob = () => {
               <input
                 type="text"
                 className={`form-control rounded-5 ${
-                  errors.titleJob ? "is-invalid" : ""
+                  errors.title ? "is-invalid" : ""
                 }`}
                 id="title"
-                name="titleJob"
-                value={job.titleJob}
+                name="title"
+                value={job.title}
                 onChange={handleInputChange}
                 placeholder="Titulo de trabajo"
               />
-              {errors.titleJob && (
-                <div className="invalid-feedback">{errors.titleJob}</div>
+              {errors.title && (
+                <div className="invalid-feedback">{errors.title}</div>
               )}
             </div>
             <div className="mb-3">
@@ -113,12 +134,12 @@ const CreateJob = () => {
             <div className="mb-3">
               <select
                 className={`form-control rounded-5 ${
-                  errors.modeOfWork ? "is-invalid" : ""
+                  errors.mode ? "is-invalid" : ""
                 }`}
-                id="modeOfWork"
-                value={job.modeOfWork}
+                id="mode"
+                value={job.mode}
                 onChange={handleInputChange}
-                name="modeOfWork"
+                name="mode"
                 required
               >
                 <option value="" disabled defaultValue>
@@ -128,20 +149,20 @@ const CreateJob = () => {
                 <option value="Tiempo parcial">Tiempo parcial</option>
                 <option value="Remoto">Remoto</option>
               </select>
-              {errors.modeOfWork && (
-                <div className="invalid-feedback">{errors.modeOfWork}</div>
+              {errors.mode && (
+                <div className="invalid-feedback">{errors.mode}</div>
               )}
             </div>
             <div className="mb-3">
-              <label htmlFor="skills" className="form-label">
+              <label htmlFor="technologies" className="form-label">
                 Tecnologias <em>(Separa las tecnologias por una coma)</em>
               </label>
               <input
                 type="text"
                 className="form-control rounded-5"
-                id="skills"
-                name="skills"
-                value={job.skills}
+                id="technologies"
+                name="technologies"
+                value={job.technologies}
                 onChange={handleInputChange}
                 required
                 placeholder="Tecnologias"
@@ -151,17 +172,17 @@ const CreateJob = () => {
               <input
                 type="text"
                 className={`form-control rounded-5 ${
-                  errors.salaryRange ? "is-invalid" : ""
+                  errors.salary ? "is-invalid" : ""
                 }`}
-                id="salaryRange"
-                value={job.salaryRange}
-                name="salaryRange"
+                id="salary"
+                value={job.salary}
+                name="salary"
                 onChange={handleInputChange}
                 required
                 placeholder="Rango de salario"
               />
-              {errors.salaryRange && (
-                <div className="invalid-feedback">{errors.salaryRange}</div>
+              {errors.salary && (
+                <div className="invalid-feedback">{errors.salary}</div>
               )}
             </div>
             <button

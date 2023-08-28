@@ -24,16 +24,28 @@ const LoginPage = () => {
   const handleButtonClick = (event) => {
     event.preventDefault();
 
-    const url = "https://64e8bf1099cf45b15fe0132e.mockapi.io/register";
+    const urlCandidates =
+      "https://64e8aae299cf45b15fdff78c.mockapi.io/candidates";
+    const urlCompanies =
+      "https://64e8aae299cf45b15fdff78c.mockapi.io/companies";
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        const existingUser = data.find(
-          (user) =>
-            user.email === login.email && user.password === login.password
-        );
+    const checkUserExistence = async () => {
+      try {
+        const responseCandidates = await fetch(urlCandidates);
+        const responseCompanies = await fetch(urlCompanies);
+
+        const dataCandidates = await responseCandidates.json();
+        const dataCompanies = await responseCompanies.json();
+
+        const existingUser =
+          dataCandidates.find(
+            (user) =>
+              user.email === login.email && user.password === login.password
+          ) ||
+          dataCompanies.find(
+            (user) =>
+              user.email === login.email && user.password === login.password
+          );
         if (existingUser) {
           setErrorMessage("");
           localStorage.setItem("user", JSON.stringify(existingUser));
@@ -41,7 +53,10 @@ const LoginPage = () => {
         } else {
           setErrorMessage("Email o contraseña incorrectos");
         }
-      });
+      } catch (error) {
+        console.error("Error checking user existence:", error);
+      }
+    };
 
     const newErrors = {
       email: login.email === "" ? "Campo email no puede estar vacio" : "",
@@ -51,7 +66,7 @@ const LoginPage = () => {
 
     setErrors(newErrors);
     if (!newErrors.email && !newErrors.password) {
-      console.log("Text values:", login);
+      checkUserExistence();
     }
   };
 
