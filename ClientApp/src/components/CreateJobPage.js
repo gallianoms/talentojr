@@ -41,7 +41,7 @@ const CreateJob = () => {
 
     try {
       const response = await fetch(
-        "https://64e8aae299cf45b15fdff78c.mockapi.io/ofertas",
+        'https://64e8aae299cf45b15fdff78c.mockapi.io/offers',
         {
           method: "POST",
           headers: {

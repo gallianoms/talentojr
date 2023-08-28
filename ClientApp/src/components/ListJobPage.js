@@ -118,7 +118,7 @@ const ListJob = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ListJob;
+export default ListJob
