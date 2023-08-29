@@ -5,6 +5,11 @@ import Filters from './Filters'
 const SearchJobPage = () => {
   const [offersData, setOffersData] = useState([])
   const [filteredOffers, setFilteredOffers] = useState([])
+  const [appliedOffers, setAppliedOffers] = useState([])
+
+  const handleApply = offerId => {
+    setAppliedOffers([...appliedOffers, offerId])
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,11 +53,20 @@ const SearchJobPage = () => {
       <br />
       <Filters onSearch={handleSearch} />
       <hr />
-      <div className='row d-flex justify-content-center gap-4 py-4'>
-        {sortedOffers.map(offer => (
-          <JobOfferCard key={offer.id} offer={offer} />
-        ))}
-      </div>
+      {sortedOffers.length === 0 ? (
+        <b>No se encontraron coincidencias.</b>
+      ) : (
+        <div className='row d-flex justify-content-center gap-4 py-4'>
+          {sortedOffers.map(offer => (
+            <JobOfferCard
+              key={offer.id}
+              offer={offer}
+              applied={appliedOffers.includes(offer.id)}
+              onApply={handleApply}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }
