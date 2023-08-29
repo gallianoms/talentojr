@@ -117,12 +117,15 @@ const CreateProfileUserPage = () => {
         dataWithCreatedAt.imageWebsiteOne = imageWebsiteOneURL
       }
 
-      console.log(dataWithCreatedAt)
+      // console.log(dataWithCreatedAt)
+
+      const user = localStorage.getItem('user')
+      const { id } = JSON.parse(user)
 
       const response = await fetch(
-        'https://64e8aae299cf45b15fdff78c.mockapi.io/candidates',
+        'https://64e8aae299cf45b15fdff78c.mockapi.io/candidates/' + id,
         {
-          method: 'POST',
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -357,7 +360,7 @@ const CreateProfileUserPage = () => {
                   <div className='col-lg-5 col-12 mb-3 mb-lg-0'>
                     <label
                       htmlFor='technologies'
-                      className='form-label text-sm'
+                      className='form-label text-md'
                     >
                       Lenguajes de programación (Elección múltiple)
                     </label>
@@ -398,7 +401,7 @@ const CreateProfileUserPage = () => {
                     </select>
                   </div>
                   <div className='col-lg-5 col-12'>
-                    <label htmlFor='softSkills' className='form-label text-sm'>
+                    <label htmlFor='softSkills' className='form-label text-md'>
                       Habilidades blandas (Elección múltiple)
                     </label>
                     <select

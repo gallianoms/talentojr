@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   Collapse,
   Navbar,
@@ -6,53 +6,53 @@ import {
   NavbarToggler,
   NavItem,
   NavLink,
-} from "reactstrap";
-import { Link } from "react-router-dom";
-import "./NavMenu.css";
+} from 'reactstrap'
+import { Link } from 'react-router-dom'
+import './NavMenu.css'
 
 export const NavMenu = () => {
-  const [collapsed, setCollapsed] = useState(true);
-  const userDataString = JSON.parse(localStorage.getItem("user"));
-  let userRole = userDataString ? userDataString.role : null;
+  const [collapsed, setCollapsed] = useState(true)
+  const userDataString = JSON.parse(localStorage.getItem('user'))
+  let userRole = userDataString ? userDataString.role : null
 
   const toggleNavbar = () => {
-    setCollapsed(!collapsed);
-  };
+    setCollapsed(!collapsed)
+  }
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    window.location.href = "/";
-  };
+    localStorage.removeItem('user')
+    window.location.href = '/iniciar-sesion'
+  }
 
   return (
     <header>
       <Navbar
-        className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
-        style={{ backgroundColor: "#6366f1" }}
+        className='navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3'
+        style={{ backgroundColor: '#6366f1' }}
         container
       >
         <NavbarBrand
           tag={Link}
-          to="/"
-          style={{ color: "#fff", fontSize: "22px", fontWeight: "500" }}
-          className="py-2 "
+          to='/'
+          style={{ color: '#fff', fontSize: '22px', fontWeight: '500' }}
+          className='py-2 '
         >
           TalentoJr.
         </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <NavbarToggler onClick={toggleNavbar} className='mr-2' />
         <Collapse
-          className="d-sm-inline-flex flex-sm-row-reverse"
+          className='d-sm-inline-flex flex-sm-row-reverse'
           isOpen={!collapsed}
           navbar
         >
-          <ul className="navbar-nav flex-grow">
+          <ul className='navbar-nav flex-grow'>
             {!userRole && (
               <>
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/iniciar-sesion"
+                    className='text-light text-md '
+                    to='/iniciar-sesion'
                   >
                     Iniciar sesion
                   </NavLink>
@@ -60,21 +60,21 @@ export const NavMenu = () => {
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/buscar-empleo"
+                    className='text-light text-md '
+                    to='/buscar-empleo'
                   >
                     Buscar Empleo
                   </NavLink>
                 </NavItem>
               </>
             )}
-            {userRole === "candidato" && (
+            {userRole === 'candidato' && (
               <>
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/buscar-empleo"
+                    className='text-light text-md '
+                    to='/buscar-empleo'
                   >
                     Buscar Empleo
                   </NavLink>
@@ -82,8 +82,8 @@ export const NavMenu = () => {
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/perfil-usuario"
+                    className='text-light text-md '
+                    to='/perfil-usuario'
                   >
                     Mi Perfil
                   </NavLink>
@@ -91,22 +91,23 @@ export const NavMenu = () => {
                 <NavItem>
                   <NavLink
                     onClick={handleLogout}
-                    className="text-light text-md "
+                    className='text-light text-md '
+                    style={{ cursor: 'pointer' }}
                   >
-                    Logout
+                    Cerrar Sesión
                   </NavLink>
                 </NavItem>
               </>
             )}
           </ul>
-          <ul className="navbar-nav flex-grow">
-            {userRole === "Empresa" && (
+          <ul className='navbar-nav flex-grow'>
+            {userRole === 'Empresa' && (
               <>
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/crear-empleo"
+                    className='text-light text-md '
+                    to='/crear-empleo'
                   >
                     Crear Empleo
                   </NavLink>
@@ -114,8 +115,8 @@ export const NavMenu = () => {
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/lista-empleos"
+                    className='text-light text-md '
+                    to='/lista-empleos'
                   >
                     Mis Empleos
                   </NavLink>
@@ -123,8 +124,8 @@ export const NavMenu = () => {
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/lista-candidatos"
+                    className='text-light text-md '
+                    to='/lista-candidatos'
                   >
                     Candidatos
                   </NavLink>
@@ -132,8 +133,8 @@ export const NavMenu = () => {
                 <NavItem>
                   <NavLink
                     tag={Link}
-                    className="text-light text-md "
-                    to="/perfil-empresa"
+                    className='text-light text-md '
+                    to='/perfil-empresa'
                   >
                     Perfil de Empresa
                   </NavLink>
@@ -141,9 +142,10 @@ export const NavMenu = () => {
                 <NavItem>
                   <NavLink
                     onClick={handleLogout}
-                    className="text-light text-md "
+                    className='text-light text-md '
+                    style={{ cursor: 'pointer' }}
                   >
-                    Logout
+                    Cerrar Sesión
                   </NavLink>
                 </NavItem>
               </>
@@ -152,5 +154,5 @@ export const NavMenu = () => {
         </Collapse>
       </Navbar>
     </header>
-  );
-};
+  )
+}
