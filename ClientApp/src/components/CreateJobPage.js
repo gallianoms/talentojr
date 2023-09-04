@@ -8,6 +8,7 @@ const CreateJob = () => {
     mode: '',
     technologies: [],
     salary: '',
+    createdAt: '',
   })
 
   const { id } = JSON.parse(localStorage.getItem('user'))
@@ -38,6 +39,7 @@ const CreateJob = () => {
       technologies: job.technologies.split(',').map(tech => tech.trim()), // Convert technologies to array
       salary: job.salary,
       companyId: id,
+      createdAt: new Date().toISOString(), // Establecer la fecha actual
     }
 
     try {
@@ -62,6 +64,7 @@ const CreateJob = () => {
           mode: '',
           technologies: '',
           salary: '',
+          createdAt: '',
         })
       } else {
         console.error('Failed to create job offer')

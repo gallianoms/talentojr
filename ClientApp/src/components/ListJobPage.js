@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import React from 'react'
+import { HiOutlineTrash, HiPencil } from 'react-icons/hi'
 
 const ListJob = () => {
   const [companies, setCompanies] = useState([])
@@ -85,24 +86,33 @@ const ListJob = () => {
                           <tbody>
                             {companies.map((offer, index) => (
                               <tr key={index}>
-                                <td>{offer.title}</td>
+                                <td className='text-md'>{offer.title}</td>
                                 {/* <td>{offer.description}</td> */}
-                                <td>
+                                <td className='text-md'>
                                   {offer.technologies.map((leng, lengIndex) => (
-                                    <span key={lengIndex}>{leng},</span>
+                                    <span key={lengIndex}>{leng}, </span>
                                   ))}
                                 </td>
-                                <td>{offer.location}</td>
-                                <td>{offer.mode}</td>
-                                <td>{offer.salary}</td>
-                                <td>{formatDate(offer.createdAt)}</td>
-                                <td>
-                                  <button
-                                    className='btn btn-danger'
-                                    onClick={() => handleDeleteOffer(offer.id)}
-                                  >
-                                    Eliminar
-                                  </button>
+                                <td className='text-md'>{offer.location}</td>
+                                <td className='text-md'>{offer.mode}</td>
+                                <td className='text-md'>{offer.salary}</td>
+                                <td className='text-md'>
+                                  {formatDate(offer.createdAt)}
+                                </td>
+                                <td className=''>
+                                  <div className='d-flex justify-content-evenly'>
+                                    <button className='btn btn-warning'>
+                                      <HiPencil />
+                                    </button>
+                                    <button
+                                      className='btn btn-danger'
+                                      onClick={() =>
+                                        handleDeleteOffer(offer.id)
+                                      }
+                                    >
+                                      <HiOutlineTrash />
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             ))}
