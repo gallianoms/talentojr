@@ -45,9 +45,26 @@ const Filters = ({ onSearch }) => {
             aria-label='Default select example'
           >
             <option>Lenguaje</option>
-            <option value='1'>One</option>
-            <option value='2'>Two</option>
-            <option value='3'>Three</option>
+            <option value='C++'>C++</option>
+            <option value='C#'>C#</option>
+            <option value='CSS'>CSS</option>
+            <option value='GO'>Goland</option>
+            <option value='HTML'>HTML</option>
+            <option value='Java'>Java</option>
+            <option value='JavaScript'>JavaScript</option>
+            <option value='Kotlin'>Kotlin</option>
+            <option value='Lua'>Lua</option>
+            <option value='Perl'>Perl</option>
+            <option value='PHP'>PHP</option>
+            <option value='Python'>Python</option>
+            <option value='R'>R</option>
+            <option value='Ruby'>Ruby</option>
+            <option value='Rust'>Rust</option>
+            <option value='Scala'>Scala</option>
+            <option value='SQL'>SQL</option>
+            <option value='Swift'>Swift</option>
+            <option value='TypeScript'>TypeScript</option>
+            <option value='Haskell'>Haskell</option>
           </select>
         </div>
         <div className='col-lg-2'>
@@ -69,7 +86,7 @@ const Filters = ({ onSearch }) => {
             <option>Rango salarial</option>
             <option value='1'>15k - 20k</option>
             <option value='2'>21k - 25k</option>
-            <option value='3'>Three</option>
+            <option value='3'>26k - 30k</option>
           </select>
         </div>
       </div>
